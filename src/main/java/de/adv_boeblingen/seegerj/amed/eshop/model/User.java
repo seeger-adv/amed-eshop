@@ -4,50 +4,50 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "t_user")
+@Entity
 public class User {
 	@Id
-	@Column(name = "username")
-	private String mUsername;
+	@Column
+	private String mail;
 
-	@Column(name = "created")
-	private long mCreated;
+	@Column
+	private long created;
 
-	@Column(name = "lastlogin")
-	private long mLastLogin;
+	@Column
+	private long lastLogin;
 
-	@Column(name = "password")
-	private String mPassword;
+	@Column
+	private String password;
 
-	public String getUsername() {
-		return this.mUsername;
+	public String getMail() {
+		return this.mail;
 	}
 
-	public void setUsername(String username) {
-		this.mUsername = username;
-	}
-
-	public String getPassword() {
-		return this.mPassword;
-	}
-
-	public void setPassword(String password) {
-		this.mPassword = password;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public long getCreated() {
-		return this.mCreated;
+		return this.created;
 	}
 
-	public void setCreated(long mCreated) {
-		this.mCreated = mCreated;
+	public void setCreated(long created) {
+		this.created = created;
 	}
 
 	public long getLastLogin() {
-		return this.mLastLogin;
+		return this.lastLogin;
 	}
 
-	public void setLastLogin(long mLastLogin) {
-		this.mLastLogin = mLastLogin;
+	public void setLastLogin(long lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
