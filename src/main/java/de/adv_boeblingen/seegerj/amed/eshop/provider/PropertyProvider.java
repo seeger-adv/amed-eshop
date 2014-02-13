@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.util;
+package de.adv_boeblingen.seegerj.amed.eshop.provider;
 
 import java.io.IOException;
 import java.io.InputStream;
