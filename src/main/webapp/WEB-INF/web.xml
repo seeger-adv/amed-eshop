@@ -5,6 +5,9 @@
 <web-app>
   <display-name>Webshop</display-name>
   <listener>
-    <listener-class>de.adv_boeblingen.seegerj.amed.eshop.util.PropertyProvider</listener-class>
+    <listener-class>de.adv_boeblingen.seegerj.amed.eshop.provider.PropertyProvider</listener-class>
+  </listener>
+  <listener>
+    <listener-class>de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider</listener-class>
   </listener>
 </web-app>
