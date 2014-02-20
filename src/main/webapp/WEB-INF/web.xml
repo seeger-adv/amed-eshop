@@ -3,11 +3,23 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Webshop</display-name>
-  <listener>
-    <listener-class>de.adv_boeblingen.seegerj.amed.eshop.provider.PropertyProvider</listener-class>
-  </listener>
-  <listener>
-    <listener-class>de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider</listener-class>
-  </listener>
+	<display-name>Webshop</display-name>
+	<context-param>
+		<param-name>tapestry.app-package</param-name>
+		<param-value>de.adv_boeblingen.seegerj.amed.eshop</param-value>
+	</context-param>
+	<filter>
+		<filter-name>app</filter-name>
+		<filter-class>org.apache.tapestry5.TapestryFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>app</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>de.adv_boeblingen.seegerj.amed.eshop.provider.PropertyProvider</listener-class>
+	</listener>
+	<listener>
+		<listener-class>de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider</listener-class>
+	</listener>
 </web-app>
