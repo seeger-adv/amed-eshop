@@ -18,4 +18,38 @@ public class Item {
 	@ManyToOne
 	@JoinColumn(name = "order")
 	private Order order;
+
+	@Column
+	private String slug;
+
+	public String getSlug() {
+		return this.slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+
+	@Column
+	private int amount;
+
+	public Order getOrder() {
+		return this.order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public int getAmount() {
+		return this.amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getId() {
+		return this.id;
+	}
 }
