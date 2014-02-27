@@ -20,12 +20,12 @@
   <body>
     <div class="container">
       <div class="masthead">
-        <h3 class="text-muted">eShop</h3>
         <ul class="nav nav-justified">
           <li><a t:type="pagelink" t:page="Index">Home</a></li>
           <li><a t:type="pagelink" t:page="About">About</a></li>
           <li><a t:type="pagelink" t:page="Contact">Contact</a></li>
         </ul>
+        <h3 class="text-muted">${message:ApplicationName}</h3>
       </div>
 
       <t:body/>
