@@ -6,6 +6,7 @@
         <t:errors/>
 
         <t:textfield
+          type="email"
           value="username"
           validate="email"
           class="form-control"
