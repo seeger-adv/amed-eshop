@@ -25,7 +25,7 @@ public class Order {
 	private Set<Item> items;
 
 	@ManyToOne
-	private User user;
+	private Customer user;
 
 	public int getId() {
 		return this.id;

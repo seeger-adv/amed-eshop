@@ -7,7 +7,7 @@ import java.util.Set;
 public class Cart {
 	private final Set<Item> items = new HashSet<Item>();
 
-	public Collection<? extends Item> getItems() {
+	public Collection<Item> getItems() {
 		return this.items;
 	}
 }
