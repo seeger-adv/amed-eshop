@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Jan Seeger" />
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/justified-nav.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css' />
 
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->

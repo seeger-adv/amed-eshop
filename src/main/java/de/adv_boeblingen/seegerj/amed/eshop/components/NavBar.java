@@ -1,10 +1,12 @@
 package de.adv_boeblingen.seegerj.amed.eshop.components;
 
 import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+@Import(stylesheet = "context:css/justified-nav.css")
 public class NavBar {
 	@Inject
 	private Messages messages;
