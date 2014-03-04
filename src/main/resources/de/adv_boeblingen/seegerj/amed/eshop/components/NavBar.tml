@@ -1,6 +1,6 @@
 <ul class="nav nav-justified" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
   <li t:type="loop" source="pageNames" value="pageName" >
-    <a t:type="pagelink" class="${tabClass}" t:page="${pageName}">${pageName}</a>
+    <a t:type="pagelink" class="${tabClass}" t:page="${pageName}">${pageLabel}</a>
   </li>
   <t:ShoppingCart />
 </ul>
