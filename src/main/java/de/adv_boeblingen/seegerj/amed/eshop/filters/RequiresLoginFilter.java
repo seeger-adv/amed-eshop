@@ -18,13 +18,10 @@ import de.adv_boeblingen.seegerj.amed.eshop.services.AuthenticatorService;
 public class RequiresLoginFilter
 implements ComponentRequestFilter {
 
-	private final PageRenderLinkSource renderLinkSource;
-
-	private final ComponentSource componentSource;
-
-	private final Response response;
-
 	private final AuthenticatorService authService;
+	private final PageRenderLinkSource renderLinkSource;
+	private final ComponentSource componentSource;
+	private final Response response;
 
 	public RequiresLoginFilter(PageRenderLinkSource renderLinkSource, ComponentSource componentSource,
 			Response response, AuthenticatorService authService) {
@@ -35,21 +32,23 @@ implements ComponentRequestFilter {
 	}
 
 	@Override
-	public void handleComponentEvent(ComponentEventRequestParameters parameters, ComponentRequestHandler handler)
+	public void handleComponentEvent(ComponentEventRequestParameters params, ComponentRequestHandler handler)
 			throws IOException {
 
-		if (redirectToLoginPageIfNecessary(parameters.getActivePageName())) {
+		String activePage = params.getActivePageName();
+		if (redirectToLoginPageIfNecessary(activePage)) {
 			return;
 		}
 
-		handler.handleComponentEvent(parameters);
+		handler.handleComponentEvent(params);
 	}
 
 	@Override
 	public void handlePageRender(PageRenderRequestParameters parameters, ComponentRequestHandler handler)
 			throws IOException {
 
-		if (redirectToLoginPageIfNecessary(parameters.getLogicalPageName())) {
+		String logicalName = parameters.getLogicalPageName();
+		if (redirectToLoginPageIfNecessary(logicalName)) {
 			return;
 		}
 
@@ -57,21 +56,17 @@ implements ComponentRequestFilter {
 	}
 
 	private boolean redirectToLoginPageIfNecessary(String pageName) throws IOException {
-
 		if (this.authService.isValidSession()) {
 			return false;
 		}
 
 		Component page = this.componentSource.getPage(pageName);
-
 		if (!page.getClass().isAnnotationPresent(RequiresLogin.class)) {
 			return false;
 		}
 
 		Link link = this.renderLinkSource.createPageRenderLink("Login");
-
 		this.response.sendRedirect(link);
-
 		return true;
 	}
 }
