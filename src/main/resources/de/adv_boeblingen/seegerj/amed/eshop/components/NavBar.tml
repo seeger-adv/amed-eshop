@@ -2,5 +2,4 @@
   <li t:type="loop" source="pageNames" value="pageName" >
     <a t:type="pagelink" class="${tabClass}" t:page="${pageName}">${pageLabel}</a>
   </li>
-  <t:ShoppingCart />
 </ul>

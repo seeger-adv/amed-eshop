@@ -1,4 +1,4 @@
-<li class="dropdown" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+<div class="col-lg-1 dropdown" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     <span class="glyphicon glyphicon-shopping-cart"></span> ${itemCount}
   </a>
@@ -7,4 +7,4 @@
       <a t:type="pagelink" t:page="${item.id}">${item.slug}</a>
     </li>
   </ul>
-</li>
+</div>
