@@ -1,13 +1,26 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-     <form class="form-signin" role="form">
-     	<t:errors/>
+     <form t:type="form" t:id="loginForm" class="form-signin" role="form">
+
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" t:validate="required,autofocus,minlength=3" />
-        <input type="password" class="form-control" placeholder="Password" t:validate="required,minlength=3" />
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"/> Remember me
-        </label>
+
+        <t:errors/>
+
+        <t:textfield
+          value="username"
+          validate="email"
+          class="form-control"
+          placeholder="Email address"
+          t:validate="required,autofocus,minlength=3" />
+
+        <t:passwordfield
+          t:id="PasswordField"
+          value="password"
+          class="form-control"
+          placeholder="Password"
+          t:validate="required,minlength=3" />
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
         <t:pagelink page="Register" class="btn btn-lg btn-primary btn-block">Register</t:pagelink>
       </form>
 </html>
