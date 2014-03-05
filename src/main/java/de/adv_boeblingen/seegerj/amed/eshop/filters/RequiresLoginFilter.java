@@ -3,6 +3,7 @@ package de.adv_boeblingen.seegerj.amed.eshop.filters;
 import java.io.IOException;
 
 import org.apache.tapestry5.Link;
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.runtime.Component;
 import org.apache.tapestry5.services.ComponentEventRequestParameters;
 import org.apache.tapestry5.services.ComponentRequestFilter;
@@ -16,20 +17,19 @@ import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.services.AuthenticatorService;
 
 public class RequiresLoginFilter
-implements ComponentRequestFilter {
+		implements ComponentRequestFilter {
 
-	private final AuthenticatorService authService;
-	private final PageRenderLinkSource renderLinkSource;
-	private final ComponentSource componentSource;
-	private final Response response;
+	@Inject
+	private AuthenticatorService authService;
 
-	public RequiresLoginFilter(PageRenderLinkSource renderLinkSource, ComponentSource componentSource,
-			Response response, AuthenticatorService authService) {
-		this.renderLinkSource = renderLinkSource;
-		this.componentSource = componentSource;
-		this.response = response;
-		this.authService = authService;
-	}
+	@Inject
+	private PageRenderLinkSource renderLinkSource;
+
+	@Inject
+	private ComponentSource componentSource;
+
+	@Inject
+	private Response response;
 
 	@Override
 	public void handleComponentEvent(ComponentEventRequestParameters params, ComponentRequestHandler handler)
