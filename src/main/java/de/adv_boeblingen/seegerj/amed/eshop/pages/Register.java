@@ -35,4 +35,8 @@ public class Register {
 			registerForm.recordError(passwordField, "Invalid user name or password.");
 		}
 	}
+
+	Object onSuccess() {
+		return Account.class;
+	}
 }
