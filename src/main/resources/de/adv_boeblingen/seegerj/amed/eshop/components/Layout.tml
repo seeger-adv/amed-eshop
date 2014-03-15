@@ -20,8 +20,9 @@
     <div class="container">
       <div class="masthead">
         <div class="row">
-          <h3 class="col-lg-11 text-muted">${message:ApplicationName}</h3>
+          <h3 class="col-lg-10 text-muted">${message:ApplicationName}</h3>
           <t:ShoppingCart />
+          <t:UserComponent />
         </div>
         <t:NavBar/>
       </div>
