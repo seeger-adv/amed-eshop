@@ -24,20 +24,23 @@ public class UserDaoImpl
 
 	@Override
 	public boolean register(final String mail, final String password) {
-
-		final Customer customer = new Customer();
-		customer.setMail(mail);
-		String cryptPassword = cryptService.crypt(password);
-		customer.setPassword(cryptPassword);
-
 		DatabaseProvider.runTransaction(new DatabaseRunnable<Void>() {
 			@Override
 			public Void run(EntityManager manager, EntityTransaction transaction) {
+				Customer customer = createUser(mail, password);
 				manager.persist(customer);
 				return null;
 			}
 		});
 
 		return authenticator.login(mail, password);
+	}
+
+	private Customer createUser(String mail, String password) {
+		Customer customer = new Customer();
+		customer.setMail(mail);
+		String cryptPassword = cryptService.crypt(password);
+		customer.setPassword(cryptPassword);
+		return customer;
 	}
 }
