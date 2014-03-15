@@ -9,7 +9,7 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.PasswordField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.adv_boeblingen.seegerj.amed.eshop.services.AuthenticatorService;
+import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
 
 @Import(stylesheet = "context:css/login.css")
 public class Login {

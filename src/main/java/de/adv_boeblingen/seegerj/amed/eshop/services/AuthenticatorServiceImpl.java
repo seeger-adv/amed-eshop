@@ -10,6 +10,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.ioc.annotations.InjectService;
 import org.apache.tapestry5.services.ApplicationStateManager;
 
+import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
+import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Customer;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider;
