@@ -9,7 +9,6 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.PasswordField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.services.AuthenticatorService;
 
 @Import(stylesheet = "context:css/login.css")
@@ -24,9 +23,6 @@ public class Login {
 
 	@Inject
 	private AuthenticatorService authenticator;
-
-	@Persist
-	private Session session;
 
 	@InjectComponent
 	private PasswordField passwordField;
