@@ -1,16 +1,11 @@
 package de.adv_boeblingen.seegerj.amed.eshop.model;
 
-public class CustomerSession {
+public class Session {
 	private Customer customer;
 	private boolean isValid;
 
-	public CustomerSession(Customer customer) {
-		this();
-		setCustomer(customer);
-	}
-
-	public CustomerSession() {
-		this.isValid = true;
+	public Session() {
+		this.isValid = false;
 	}
 
 	public Customer getCustomer() {
@@ -19,6 +14,7 @@ public class CustomerSession {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+		this.isValid = true;
 	}
 
 	public boolean isValid() {
