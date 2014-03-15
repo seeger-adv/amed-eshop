@@ -6,10 +6,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import org.apache.tapestry5.annotations.SessionState;
+import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.ioc.annotations.InjectService;
+import org.apache.tapestry5.services.ApplicationStateManager;
 
 import de.adv_boeblingen.seegerj.amed.eshop.model.Customer;
-import de.adv_boeblingen.seegerj.amed.eshop.model.CustomerSession;
+import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider.DatabaseRunnable;
 
@@ -17,9 +19,10 @@ public class AuthenticatorServiceImpl
 		implements AuthenticatorService {
 
 	@SessionState
-	private CustomerSession session;
+	private Session session;
 
-	private boolean sessionExists;
+	@Inject
+	private ApplicationStateManager stateManager;
 
 	@InjectService("sha512")
 	private CryptService cryptService;
@@ -35,10 +38,11 @@ public class AuthenticatorServiceImpl
 			return false;
 		}
 
+		Session session = stateManager.get(Session.class);
 		String passwordHash = cryptService.crypt(password);
 		if (foundUser.getPassword().equals(passwordHash)) {
+			session.setCustomer(foundUser);
 			writeLoginTime(foundUser);
-			session = new CustomerSession(foundUser);
 			return true;
 		}
 
@@ -47,7 +51,7 @@ public class AuthenticatorServiceImpl
 
 	@Override
 	public boolean isValidSession() {
-		return sessionExists && session.isValid();
+		return stateManager.get(Session.class).isValid();
 	}
 
 	private static Customer findUser(final String username) {
