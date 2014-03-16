@@ -21,7 +21,7 @@ public class Product {
 	private String description;
 
 	@Lob
-	@Column
+	@Column(nullable = true)
 	private byte[] image;
 
 	@Column
