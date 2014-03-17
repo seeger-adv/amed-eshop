@@ -1,8 +1,24 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-     <form class="form-signin" role="form">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" />
-        <input type="password" class="form-control" placeholder="Password" required="required" />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+     <form t:type="form" t:id="registerForm" class="form-signin" role="form">
+        <h2 class="form-signin-heading">Register a new Account</h2>
+
+        <t:errors/>
+
+        <t:textfield
+          type="email"
+          value="username"
+          validate="email"
+          class="form-control"
+          placeholder="Email address"
+          t:validate="required,autofocus,minlength=3" />
+
+        <t:passwordfield
+          t:id="PasswordField"
+          value="password"
+          class="form-control"
+          placeholder="Password"
+          t:validate="required,minlength=3" />
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </form>
 </html>

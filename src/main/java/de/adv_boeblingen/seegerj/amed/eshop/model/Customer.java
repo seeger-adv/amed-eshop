@@ -20,12 +20,12 @@ public class Customer {
 	@Column
 	private String mail;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 
+	@Column
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
 	private Date lastLogin;
 
 	@Column

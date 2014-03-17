@@ -9,18 +9,20 @@
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css' />
 
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <!--[if lt IE 9]>
+      <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
   </head>
   <body>
     <div class="container">
       <div class="masthead">
         <div class="row">
-          <h3 class="col-lg-11 text-muted">${message:ApplicationName}</h3>
+          <h3 class="col-lg-10 text-muted">${message:ApplicationName}</h3>
           <t:ShoppingCart />
+          <t:UserComponent />
         </div>
         <t:NavBar/>
       </div>
@@ -30,7 +32,6 @@
       <div class="footer">
         <p>&copy; Company 2014</p>
       </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript
