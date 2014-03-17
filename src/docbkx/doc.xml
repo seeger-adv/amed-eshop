@@ -20,9 +20,21 @@
 		<para>
 			<mediaobject>
 				<imageobject>
-					<imagedata fileref="Login.svg" format="SVG" scalefit="1" />
+					<imagedata fileref="Login.svg" format="SVG" scalefit="1" width="100%" />
 				</imageobject>
 			</mediaobject>
+			
+			<mediaobject>
+                <imageobject>
+                    <imagedata fileref="Catalog.svg" format="SVG" scalefit="1" width="100%" />
+                </imageobject>
+            </mediaobject>
+            
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="Checkout.svg" format="SVG" scalefit="1" width="100%" />
+                </imageobject>
+            </mediaobject>
 		</para>
 	</chapter>
 </book>
