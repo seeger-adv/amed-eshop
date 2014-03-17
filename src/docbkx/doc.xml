@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+	<title>eShop Dokumentation</title>
+
+	<bookinfo>
+		<edition>${project.version}</edition>
+		<authorgroup>
+			<author>
+				<surname>Seeger</surname>
+				<firstname>Jan</firstname>
+				<email>seegerj@adv-boeblingen.de</email>
+			</author>
+		</authorgroup>
+	</bookinfo>
+
+    <chapter>
+    <beginpage />
+        <title>Konzept</title>
+		<para>
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="Login.svg" format="SVG" scalefit="1" />
+				</imageobject>
+			</mediaobject>
+		</para>
+	</chapter>
+</book>
