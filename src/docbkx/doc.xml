@@ -16,32 +16,163 @@
 
 	<chapter>
 		<beginpage />
-		<title>Zielgruppe</title>
+		<title>Grundidee</title>
+		<para>Thema: Kaffee Shop</para>
+		<para>Bei meinem eShop Projekt handelt es sich ein Kaffeegeschäft,
+			welches sich zum Ziel gesetzt hat den bestmöglichen Kaffee möglichst
+			bequem und stressfrei zu beziehen.
+		</para>
+		<para>Neukunden können sich durch kleine Probeportionen von der
+			Qualität über zeugen lassen, während zufriedene Stammkunden auch
+			gleich ein Abonnement abschließen können.
+		</para>
+		<para>Der Versandhandel besitzt mehrere Lagerhauser, die im ganzen
+			Land verteilt sind. Wenn ein Kunde eine Produktseite aufruft, soll
+			die ungefähre Lieferdauer angezeigt werden. Diese kann folgende Werte
+			annehmen:
+		</para>
+		<itemizedlist>
+			<listitem>
+				<para>Sofort (im selben Bundesland vorrätig)</para>
+			</listitem>
+			<listitem>
+				<para>Geringfügig längere Lieferzeit (anderes Lager)</para>
+			</listitem>
+			<listitem>
+				<para>Vergriffen (Muss vom Lieferanten nachbestellt werden)</para>
+			</listitem>
+		</itemizedlist>
+		<sect1>
+			<title>Login/Reg</title>
+			<para>
+				Die Adress- und Zahlungsinformation der Kunden soll gespeichert
+				werden und bei der nächsten Bestellung zur Auswahl angezeigt werden.
+			</para>
+		</sect1>
 	</chapter>
 	<chapter>
 		<beginpage />
-		<title>Konzept</title>
+		<title>Sortiment</title>
+		<itemizedlist>
+			<listitem>
+				<para>Bohnen</para>
+			</listitem>
+			<listitem>
+				<para>Maschinen</para>
+			</listitem>
+			<listitem>
+				<para>Tassen</para>
+			</listitem>
+			<listitem>
+				<para>Literatur</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter>
+		<beginpage />
+		<title>Zielgruppe</title>
 		<para>
+			Wer: starke Kaffee Trinker
+			Alter: 18 - 40
+			Junge (Aktive)
+		</para>
+	</chapter>
+
+	<chapter>
+		<beginpage />
+		<title>optionale Features</title>
+		<itemizedlist>
+			<listitem>
+				<para>Menschen</para>
+			</listitem>
+			<listitem>
+				<para>Kaffeeabonement</para>
+			</listitem>
+			<listitem>
+				<para>Probeportion</para>
+			</listitem>
+			<listitem>
+				<para>Shipment tracking</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+
+	<chapter>
+		<beginpage />
+		<title>Produktkategorien</title>
+		<sect1>
+			<title>Kaffee</title>
+			<itemizedlist>
+				<listitem>
+					<para>Probeportionen</para>
+				</listitem>
+				<listitem>
+					<para>Normale Portionen</para>
+				</listitem>
+				<listitem>
+					<para>Abos</para>
+				</listitem>
+			</itemizedlist>
+		</sect1>
+		<sect1>
+			<title>Maschinen</title>
+			<itemizedlist>
+				<listitem>
+					<para>Vollautomaten</para>
+				</listitem>
+				<listitem>
+					<para>Sonstige</para>
+				</listitem>
+			</itemizedlist>
+		</sect1>
+		<sect1>
+			<title>Zubehör</title>
+			<itemizedlist>
+				<listitem>
+					<para>Mühlen</para>
+				</listitem>
+				<listitem>
+					<para>Tassen</para>
+				</listitem>
+				<listitem>
+					<para>Kannen</para>
+				</listitem>
+				<listitem>
+					<para>Literatur</para>
+				</listitem>
+			</itemizedlist>
+		</sect1>
+	</chapter>
+
+	<chapter>
+		<beginpage />
+		<title>Konzept</title>
+		<sect1>
+			<title>Login</title>
 			<mediaobject>
 				<imageobject>
 					<imagedata fileref="Login.svg" format="SVG" scalefit="1"
 						width="100%" />
 				</imageobject>
 			</mediaobject>
-
+		</sect1>
+		<sect1>
+			<title>Katalog</title>
 			<mediaobject>
 				<imageobject>
 					<imagedata fileref="Catalog.svg" format="SVG" scalefit="1"
 						width="100%" />
 				</imageobject>
 			</mediaobject>
-
+		</sect1>
+		<sect1>
+			<title>Bestellvorgang</title>
 			<mediaobject>
 				<imageobject>
 					<imagedata fileref="Checkout.svg" format="SVG" scalefit="1"
 						width="100%" />
 				</imageobject>
 			</mediaobject>
-		</para>
+		</sect1>
 	</chapter>
 </book>
