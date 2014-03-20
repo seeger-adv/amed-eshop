@@ -9,7 +9,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
+@DynamicUpdate
+@DynamicInsert
 public class Customer {
 	@Id
 	@Column

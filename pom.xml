@@ -86,6 +86,40 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.agilejava.docbkx</groupId>
+				<artifactId>docbkx-maven-plugin</artifactId>
+				<version>2.0.15</version>
+				<dependencies>
+					<dependency>
+						<groupId>net.sf.xslthl</groupId>
+						<artifactId>xslthl</artifactId>
+						<version>2.0.2</version>
+						<scope>runtime</scope>
+					</dependency>
+					<dependency>
+						<groupId>net.sf.offo</groupId>
+						<artifactId>fop-hyph</artifactId>
+						<version>1.2</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate-pdf</goal>
+						</goals>
+						<phase>pre-site</phase>
+						<configuration>
+							<sourceDirectory>${basedir}/src/docbkx</sourceDirectory>
+							<xincludeSupported>true</xincludeSupported>
+							<includes>doc.xml</includes>
+							<foCustomization>src/docbkx/fopdf.xsl</foCustomization>
+							<targetDirectory>${project.build.directory}/site/</targetDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
