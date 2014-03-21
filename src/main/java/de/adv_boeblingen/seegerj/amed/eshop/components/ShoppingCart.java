@@ -19,8 +19,4 @@ public class ShoppingCart {
 	public Collection<Item> getItems() {
 		return shoppingCart.getItems();
 	}
-
-	public int getItemCount() {
-		return shoppingCart.getItems().size();
-	}
 }
