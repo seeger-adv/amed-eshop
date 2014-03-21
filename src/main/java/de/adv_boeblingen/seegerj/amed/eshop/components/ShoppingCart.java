@@ -9,6 +9,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
 
 public class ShoppingCart {
+	@Property
 	@SessionState
 	private Cart shoppingCart;
 
