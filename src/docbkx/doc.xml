@@ -43,58 +43,29 @@
 			</listitem>
 		</itemizedlist>
 		<sect1>
-			<title>Login/Reg</title>
+			<title>Anmeldung</title>
 			<para>
 				Die Adress- und Zahlungsinformation der Kunden soll gespeichert
 				werden und bei der nächsten Bestellung zur Auswahl angezeigt werden.
 			</para>
+			<para>
+				Die Bestellungen werden für die Rechnungsstellung und die
+				Buchhaltung gespeichert.
+			</para>
 		</sect1>
-	</chapter>
-	<chapter>
-		<beginpage />
-		<title>Sortiment</title>
-		<itemizedlist>
-			<listitem>
-				<para>Bohnen</para>
-			</listitem>
-			<listitem>
-				<para>Maschinen</para>
-			</listitem>
-			<listitem>
-				<para>Tassen</para>
-			</listitem>
-			<listitem>
-				<para>Literatur</para>
-			</listitem>
-		</itemizedlist>
 	</chapter>
 	<chapter>
 		<beginpage />
 		<title>Zielgruppe</title>
 		<para>
 			Wer: starke Kaffee Trinker
+		</para>
+		<para>
 			Alter: 18 - 40
+		</para>
+		<para>
 			Junge (Aktive)
 		</para>
-	</chapter>
-
-	<chapter>
-		<beginpage />
-		<title>optionale Features</title>
-		<itemizedlist>
-			<listitem>
-				<para>Menschen</para>
-			</listitem>
-			<listitem>
-				<para>Kaffeeabonement</para>
-			</listitem>
-			<listitem>
-				<para>Probeportion</para>
-			</listitem>
-			<listitem>
-				<para>Shipment tracking</para>
-			</listitem>
-		</itemizedlist>
 	</chapter>
 
 	<chapter>
@@ -174,5 +145,21 @@
 				</imageobject>
 			</mediaobject>
 		</sect1>
+	</chapter>
+
+	<chapter>
+		<beginpage />
+		<title>optionale Features</title>
+		<itemizedlist>
+			<listitem>
+				<para>Kaffeeabonement</para>
+			</listitem>
+			<listitem>
+				<para>Probeportion</para>
+			</listitem>
+			<listitem>
+				<para>Shipment tracking</para>
+			</listitem>
+		</itemizedlist>
 	</chapter>
 </book>
