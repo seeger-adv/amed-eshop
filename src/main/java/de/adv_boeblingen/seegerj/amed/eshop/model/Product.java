@@ -24,6 +24,17 @@ public class Product {
 	@Lob
 	private byte[] image;
 
+	@Column
+	private String slug;
+
+	public String getSlug() {
+		return this.slug;
+	}
+
+	public void setSlug(String slug) {
+		this.slug = slug;
+	}
+
 	public int getId() {
 		return this.id;
 	}

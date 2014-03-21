@@ -24,19 +24,19 @@ public class Item {
 	@JoinColumn(name = "order")
 	private Order order;
 
-	@Column
-	private String slug;
-
-	public String getSlug() {
-		return this.slug;
-	}
-
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
+	@ManyToOne
+	private Product product;
 
 	@Column
 	private int amount;
+
+	public Product getProduct() {
+		return this.product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
 	public Order getOrder() {
 		return this.order;
