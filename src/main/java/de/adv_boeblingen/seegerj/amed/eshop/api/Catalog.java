@@ -5,5 +5,5 @@ import java.util.Set;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Product;
 
 public interface Catalog {
-	Set<Product> getItems(Filter filter);
+	Set<Product> getProducts(Filter filter);
 }
