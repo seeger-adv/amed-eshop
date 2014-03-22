@@ -22,9 +22,6 @@ public class Product {
 	@Column
 	private String slug;
 
-	@Column
-	private String title;
-
 	public String getSlug() {
 		return this.slug;
 	}
@@ -43,13 +40,5 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 }
