@@ -1,5 +1,8 @@
 package de.adv_boeblingen.seegerj.amed.eshop.provider;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -50,7 +53,9 @@ public class DatabaseProvider implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
+		Logger logger = Logger.getLogger(getClass().getName());
 		String databaseConfig = PropertyProvider.getProperty("DATABASECONFIG");
 		emf = Persistence.createEntityManagerFactory(databaseConfig);
+		logger.log(Level.INFO, "EntityManagerFactory successfully created!");
 	}
 }
