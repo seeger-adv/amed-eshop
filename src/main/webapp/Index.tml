@@ -5,9 +5,9 @@
         <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
       </div>
 
-      <ul class="nav nav-justified" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+      <ul>
           <li t:type="loop" source="products" value="product" >
-            <a t:type="pagelink" t:page="Product" context="product.id">${product.description}</a>
+            <a t:type="pagelink" t:page="Product" context="product.id">${product.slug}</a>
           </li>
       </ul>
 
