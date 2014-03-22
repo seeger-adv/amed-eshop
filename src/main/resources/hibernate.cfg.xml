@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="eshopdatabase">
+        <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:H:/eshop.db</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLiteDialect</property>
+        <property name="hbm2ddl.auto">create</property><!-- create update validate //-->
+        <property name="hibernate.format_sql">true</property>
+    </session-factory>
+</hibernate-configuration>
