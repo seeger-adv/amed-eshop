@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.services;
+package de.adv_boeblingen.seegerj.amed.eshop.dao;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,11 +12,11 @@ import javax.persistence.criteria.Root;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.Catalog;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
-import de.adv_boeblingen.seegerj.amed.eshop.model.Product;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider.DatabaseRunnable;
 
-public class CatalogServiceImpl implements Catalog {
+public class CatalogDao implements Catalog {
 	@Override
 	public Set<Product> getProducts(final Filter filter) {
 		return DatabaseProvider.runQuery(new DatabaseRunnable<Set<Product>>() {

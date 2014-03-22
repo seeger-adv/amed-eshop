@@ -6,7 +6,7 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.Catalog;
-import de.adv_boeblingen.seegerj.amed.eshop.model.Product;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
 public class Index {
 	@Inject

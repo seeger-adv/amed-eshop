@@ -7,6 +7,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Catalog;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
+import de.adv_boeblingen.seegerj.amed.eshop.dao.CatalogDao;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.UserDaoImpl;
 import de.adv_boeblingen.seegerj.amed.eshop.filters.RequiresLoginFilter;
 
@@ -21,6 +22,6 @@ public class AppModule {
 		binder.bind(CryptService.class, MD5Service.class);
 
 		binder.bind(UserDao.class, UserDaoImpl.class);
-		binder.bind(Catalog.class, CatalogServiceImpl.class);
+		binder.bind(Catalog.class, CatalogDao.class);
 	}
 }
