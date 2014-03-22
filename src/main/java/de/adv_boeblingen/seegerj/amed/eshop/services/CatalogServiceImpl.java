@@ -25,8 +25,10 @@ public class CatalogServiceImpl implements Catalog {
 				CriteriaBuilder builder = manager.getCriteriaBuilder();
 				CriteriaQuery<Product> criteria = builder.createQuery(Product.class);
 
+				@SuppressWarnings("unused")
+				Root<Product> root = criteria.from(Product.class);
+
 				if (filter != null) {
-					Root<Product> root = criteria.from(Product.class);
 					filter.filter(null);
 				}
 
