@@ -1,9 +1,10 @@
-package de.adv_boeblingen.seegerj.amed.eshop.model;
+package de.adv_boeblingen.seegerj.amed.eshop.model.database;
 
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,19 +17,20 @@ import org.hibernate.annotations.DynamicInsert;
 
 @Entity
 @DynamicInsert
-public class Order {
+public class Purchase {
 	@Id
-	@Column(name = "orderid")
+	@Column(name = "purchaseid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@OneToMany
-	@JoinColumn(name = "order")
-	@OrderBy(value = "itemid")
+	@JoinColumn(name = "purchase")
+	@OrderBy(value = "id")
 	private Set<Item> items;
 
-	@ManyToOne
-	private Customer user;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "customer")
+	private Customer customer;
 
 	public int getId() {
 		return this.id;

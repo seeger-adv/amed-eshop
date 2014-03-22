@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.model;
+package de.adv_boeblingen.seegerj.amed.eshop.model.database;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -21,10 +22,11 @@ public class Item {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "order")
-	private Order order;
+	@JoinColumn(name = "purchase")
+	private Purchase purchase;
 
-	@ManyToOne
+	@OneToOne
+	@JoinColumn(name = "product")
 	private Product product;
 
 	@Column
@@ -38,12 +40,12 @@ public class Item {
 		this.product = product;
 	}
 
-	public Order getOrder() {
-		return this.order;
+	public Purchase getPurchase() {
+		return this.purchase;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setPurchase(Purchase purchase) {
+		this.purchase = purchase;
 	}
 
 	public int getAmount() {

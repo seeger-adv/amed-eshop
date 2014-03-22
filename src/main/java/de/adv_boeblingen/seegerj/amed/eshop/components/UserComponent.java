@@ -3,8 +3,8 @@ package de.adv_boeblingen.seegerj.amed.eshop.components;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
 
-import de.adv_boeblingen.seegerj.amed.eshop.model.Customer;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
 
 public class UserComponent {
 

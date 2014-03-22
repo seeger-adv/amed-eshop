@@ -6,10 +6,11 @@
     <persistence-unit name="eshopdatabase" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <non-jta-data-source>java:/comp/env/jdbc/eshopdatasource</non-jta-data-source>
-        <class>de.adv_boeblingen.seegerj.amed.eshop.model.Customer</class>
-        <class>de.adv_boeblingen.seegerj.amed.eshop.model.Order</class>
-        <class>de.adv_boeblingen.seegerj.amed.eshop.model.Item</class>
-        <class>de.adv_boeblingen.seegerj.amed.eshop.model.Product</class>
+        <class>de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer</class>
+        <class>de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase</class>
+        <class>de.adv_boeblingen.seegerj.amed.eshop.model.database.Item</class>
+        <class>de.adv_boeblingen.seegerj.amed.eshop.model.database.Product</class>
+        <class>de.adv_boeblingen.seegerj.amed.eshop.model.database.Address</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="create"/><!-- create update validate //-->

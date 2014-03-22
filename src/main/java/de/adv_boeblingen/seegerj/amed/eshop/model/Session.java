@@ -1,5 +1,7 @@
 package de.adv_boeblingen.seegerj.amed.eshop.model;
 
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
+
 public class Session {
 	private Customer customer;
 

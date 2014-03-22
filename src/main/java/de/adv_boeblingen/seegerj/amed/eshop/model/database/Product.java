@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.model;
+package de.adv_boeblingen.seegerj.amed.eshop.model.database;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,12 +20,15 @@ public class Product {
 	@Column
 	private String description;
 
-	@Column
 	@Lob
+	@Column
 	private byte[] image;
 
 	@Column
 	private String slug;
+
+	@Column
+	private String title;
 
 	public String getSlug() {
 		return this.slug;
@@ -53,5 +56,13 @@ public class Product {
 
 	public void setImage(byte[] image) {
 		this.image = image;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }
