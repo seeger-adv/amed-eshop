@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -20,15 +19,8 @@ public class Product {
 	@Column
 	private String description;
 
-	@Lob
-	@Column
-	private byte[] image;
-
 	@Column
 	private String slug;
-
-	@Column
-	private String title;
 
 	public String getSlug() {
 		return this.slug;
@@ -48,21 +40,5 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public byte[] getImage() {
-		return this.image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 }
