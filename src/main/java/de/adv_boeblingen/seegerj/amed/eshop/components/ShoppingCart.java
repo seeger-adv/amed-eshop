@@ -9,6 +9,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
 
 public class ShoppingCart {
+	@Property
 	@SessionState
 	private Cart shoppingCart;
 
@@ -17,9 +18,5 @@ public class ShoppingCart {
 
 	public Collection<Item> getItems() {
 		return shoppingCart.getItems();
-	}
-
-	public int getItemCount() {
-		return shoppingCart.getItems().size();
 	}
 }
