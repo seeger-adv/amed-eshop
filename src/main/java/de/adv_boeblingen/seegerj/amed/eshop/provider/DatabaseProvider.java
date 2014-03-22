@@ -48,7 +48,9 @@ public class DatabaseProvider implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
-		emf.close();
+		if (emf != null) {
+			emf.close();
+		}
 	}
 
 	@Override
