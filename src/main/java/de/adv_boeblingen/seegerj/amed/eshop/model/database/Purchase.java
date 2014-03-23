@@ -62,7 +62,7 @@ public class Purchase {
 	}
 
 	public Customer getCustomer() {
-		return customer;
+		return this.customer;
 	}
 
 	public void setCustomer(Customer customer) {
@@ -70,7 +70,7 @@ public class Purchase {
 	}
 
 	public Date getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(Date date) {
@@ -78,7 +78,7 @@ public class Purchase {
 	}
 
 	public ShippingState getShippingState() {
-		return shippingState;
+		return this.shippingState;
 	}
 
 	public void setShippingState(ShippingState shippingState) {
