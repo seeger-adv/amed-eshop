@@ -3,6 +3,8 @@
 
         <h2 class="form-signin-heading">Please sign in</h2>
 
+        <t:errors/>
+
         <t:textfield
           type="email"
           value="username"
