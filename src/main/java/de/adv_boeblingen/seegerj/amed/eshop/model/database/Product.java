@@ -15,6 +15,7 @@ public class Product {
 	@Id
 	@Column(name = "productid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@NonVisual
 	private long id;
 
 	@Column
