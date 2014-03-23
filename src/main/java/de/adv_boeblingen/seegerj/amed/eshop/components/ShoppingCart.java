@@ -2,6 +2,7 @@ package de.adv_boeblingen.seegerj.amed.eshop.components;
 
 import java.util.Collection;
 
+import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 
@@ -15,6 +16,10 @@ public class ShoppingCart {
 
 	@Property
 	private Item item;
+
+	@Parameter
+	@Property
+	private String layout;
 
 	public Collection<Item> getItems() {
 		return shoppingCart.getItems();

@@ -21,7 +21,7 @@
       <div class="masthead">
         <div class="row">
           <h3 class="col-lg-10 text-muted">${message:ApplicationName}</h3>
-          <t:ShoppingCart />
+          <t:ShoppingCart layout="literal:col-lg-offset-6 col-lg-1" />
           <t:UserComponent layout="literal:col-lg-2" />
         </div>
         <t:NavBar/>
