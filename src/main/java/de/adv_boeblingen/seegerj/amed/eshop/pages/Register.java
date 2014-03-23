@@ -1,5 +1,7 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
+import javax.persistence.RollbackException;
+
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -31,8 +33,10 @@ public class Register {
 	private Form registerForm;
 
 	void onValidateFromRegisterForm() {
-		if (!userDao.register(username, password)) {
-			registerForm.recordError(passwordField, "Invalid user name or password.");
+		try {
+			userDao.register(username, password);
+		} catch (RollbackException e) {
+			registerForm.recordError(passwordField, "User already exists!");
 		}
 	}
 
