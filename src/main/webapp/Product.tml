@@ -1,0 +1,6 @@
+<html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">   
+      <t:beandisplay object="product">
+            <h1>${product.slug}</h1>
+			<p>${product.description}</p>
+      </t:beandisplay>
+</html>																																																																																																																																																																																																																																																																																												

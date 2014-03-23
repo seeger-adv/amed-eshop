@@ -37,4 +37,14 @@ public class CatalogDao implements Catalog {
 			}
 		});
 	}
+
+	@Override
+	public Product getProduct(final long productId) {
+		return DatabaseProvider.runQuery(new DatabaseRunnable<Product>() {
+			@Override
+			public Product run(EntityManager manager, EntityTransaction transaction) {
+				return manager.find(Product.class, productId);
+			}
+		});
+	}
 }
