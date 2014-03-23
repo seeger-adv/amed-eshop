@@ -5,18 +5,5 @@
         <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
       </div>
 
-      <div class="row">
-        <div class="col-lg-4"  t:type="loop" source="products" value="product">
-          <h2>${product.slug}</h2>
-          <p>${product.description}</p>
-          <p>
-          	<a
-          		t:type="pagelink"
-          		t:page="Product"
-          		context="product.id"
-          		class="btn btn-primary"
-          		role="button">View details &raquo;</a>
-          </p>
-        </div>
-      </div>
+      <t:GridListing />
 </html>
