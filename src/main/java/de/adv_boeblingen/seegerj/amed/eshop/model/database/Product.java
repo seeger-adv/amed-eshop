@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
@@ -14,7 +15,7 @@ public class Product {
 	@Id
 	@Column(name = "productid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	@Column
 	private String description;
@@ -30,7 +31,7 @@ public class Product {
 		this.slug = slug;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
