@@ -13,8 +13,8 @@ public class UserComponent {
 	@Inject
 	private ApplicationStateManager stateManager;
 
-	@Parameter
 	@Property
+	@Parameter(defaultPrefix = "literal")
 	private String layout;
 
 	private Session session;
