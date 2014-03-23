@@ -1,4 +1,4 @@
-<div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:p="tapestry:parameter">
+<div class="${layout}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:p="tapestry:parameter">
   <t:if test="hasUserInfo">
     ${userInfo}
     <t:pageLink page="Logout">Logout</t:pageLink>

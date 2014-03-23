@@ -22,7 +22,7 @@
         <div class="row">
           <h3 class="col-lg-10 text-muted">${message:ApplicationName}</h3>
           <t:ShoppingCart />
-          <t:UserComponent />
+          <t:UserComponent layout="literal:col-lg-2" />
         </div>
         <t:NavBar/>
       </div>
