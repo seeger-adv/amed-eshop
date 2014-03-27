@@ -1,15 +1,6 @@
-<div class="btn-group ${layout}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    <span class="glyphicon glyphicon-shopping-cart"></span>
+<div class="${layout}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+  <a t:type="pagelink" t:page="ShoppingCart">
+    <span class="glyphicon glyphicon-shopping-cart" />
     ${shoppingCart.items.size()}
-  </button>
-  <ul class="dropdown-menu">
-    <li t:type="loop" source="items" value="item" >
-      <a t:type="pagelink" t:page="Product" context="${item.product.id}">${item.product.slug}</a>&nbsp;x${item.amount}
-    </li>
-    <li role="presentation" class="divider"></li>
-    <li>
-      <a href="#">Checkout</a>
-    </li>
-  </ul>
+  </a>
 </div>
