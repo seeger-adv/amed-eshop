@@ -15,7 +15,7 @@
         <t:passwordfield
           t:id="PasswordField"
           value="password"
-          class="form-control"
+          class="form-control middle"
           placeholder="Password"
           t:validate="required,minlength=3" />
           

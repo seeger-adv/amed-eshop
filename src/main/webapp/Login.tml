@@ -9,14 +9,14 @@
           type="email"
           value="username"
           validate="email"
-          class="form-control"
+          class="form-control top"
           placeholder="Email address"
           t:validate="required,autofocus,minlength=3" />
 
         <t:passwordfield
           t:id="PasswordField"
           value="password"
-          class="form-control"
+          class="form-control bottom"
           placeholder="Password"
           t:validate="required,minlength=3" />
 

@@ -27,6 +27,12 @@
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+
+.form-signin input.middle {
+	border-radius: 0;
+    margin-bottom: -1px;
+}
+
 .form-signin input.bottom {
   margin-bottom: 10px;
   border-top-left-radius: 0;
