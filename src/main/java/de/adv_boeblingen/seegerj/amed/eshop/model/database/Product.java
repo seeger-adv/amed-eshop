@@ -19,6 +19,9 @@ public class Product {
 	private long id;
 
 	@Column
+	private float price;
+
+	@Column
 	private String description;
 
 	@Column
@@ -42,5 +45,13 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public float getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 }
