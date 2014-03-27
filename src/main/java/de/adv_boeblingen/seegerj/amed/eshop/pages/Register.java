@@ -21,6 +21,9 @@ public class Register {
 	@Property
 	private String password;
 
+	@Property
+	private String password2;
+
 	@Inject
 	private UserDao userDao;
 
@@ -28,10 +31,14 @@ public class Register {
 	private Form registerForm;
 
 	void onValidateFromRegisterForm() {
+		if (!this.password.equals(this.password2)) {
+			this.registerForm.recordError("Passwords do not match!");
+		}
+
 		try {
-			userDao.register(username, password);
+			this.userDao.register(this.username, this.password);
 		} catch (RollbackException e) {
-			registerForm.recordError("User already exists!");
+			this.registerForm.recordError("User already exists!");
 		}
 	}
 
