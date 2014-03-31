@@ -10,7 +10,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.Catalog;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
-public class GridListing {
+public class ProductListing {
 	@Inject
 	private Catalog catalog;
 
