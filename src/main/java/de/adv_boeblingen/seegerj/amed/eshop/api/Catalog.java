@@ -18,7 +18,7 @@ public interface Catalog {
 	 *            Filter or null for all Products.
 	 * @return Set of Products.
 	 */
-	Set<Product> getProducts(Filter filter);
+	Set<Product> getProducts(Filter filter, int max);
 
 	/**
 	 * Returns a single Product as specified by its id.

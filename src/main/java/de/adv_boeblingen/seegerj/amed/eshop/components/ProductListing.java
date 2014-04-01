@@ -22,9 +22,14 @@ public class ProductListing {
 	@Parameter(allowNull = true)
 	private String filter;
 
+	@Property
+	@Parameter(value = "-1")
+	private String max;
+
 	public Set<Product> getProducts() {
 		Filter productFilter = getFilter(this.filter);
-		return this.catalog.getProducts(productFilter);
+		int maxProducts = Integer.parseInt(this.max);
+		return this.catalog.getProducts(productFilter, maxProducts);
 	}
 
 	private Filter getFilter(String input) {

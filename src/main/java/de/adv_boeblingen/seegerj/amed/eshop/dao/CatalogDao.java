@@ -18,7 +18,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider.DatabaseRu
 
 public class CatalogDao implements Catalog {
 	@Override
-	public Set<Product> getProducts(final Filter filter) {
+	public Set<Product> getProducts(final Filter filter, final int max) {
 		return DatabaseProvider.runQuery(new DatabaseRunnable<Set<Product>>() {
 			@Override
 			public Set<Product> run(EntityManager manager, EntityTransaction transaction) {
@@ -29,10 +29,15 @@ public class CatalogDao implements Catalog {
 				Root<Product> root = criteria.from(Product.class);
 
 				if (filter != null) {
-					filter.filter(null);
+					filter.filter(criteria);
 				}
 
 				TypedQuery<Product> typedQuery = manager.createQuery(criteria);
+
+				if (max != -1) {
+					typedQuery.setMaxResults(max);
+				}
+
 				return new HashSet<Product>(typedQuery.getResultList());
 			}
 		});
