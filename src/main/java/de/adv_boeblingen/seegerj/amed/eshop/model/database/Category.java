@@ -33,7 +33,7 @@ public class Category {
 	private Category parent;
 
 	@OneToMany(mappedBy = "parent")
-	private final Set<Category> children = new HashSet<Category>();
+	private final Set<Category> subcategories = new HashSet<Category>();
 
 	@OneToMany(mappedBy = "category")
 	private final Set<Product> products = new HashSet<Product>();
@@ -50,8 +50,8 @@ public class Category {
 		return this.id;
 	}
 
-	public Set<Category> getChildren() {
-		return this.children;
+	public Set<Category> getSubcategories() {
+		return this.subcategories;
 	}
 
 	public Set<Product> getProducts() {
