@@ -18,7 +18,7 @@ public class NavBar {
 	private String pageName;
 
 	public String[] getPageNames() {
-		return new String[] { "Index", "Catalog", "Account", "About", "Contact" };
+		return new String[] { "Index", "Category", "Account", "About", "Contact" };
 	}
 
 	public String getPageLabel() {
