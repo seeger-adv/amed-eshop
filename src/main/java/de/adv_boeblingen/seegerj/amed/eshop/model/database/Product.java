@@ -1,10 +1,13 @@
 package de.adv_boeblingen.seegerj.amed.eshop.model.database;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.DynamicUpdate;
@@ -26,6 +29,10 @@ public class Product {
 
 	@Column
 	private String slug;
+
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "category")
+	private Category category;
 
 	public String getSlug() {
 		return this.slug;
@@ -53,5 +60,9 @@ public class Product {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public Category getCategory() {
+		return this.category;
 	}
 }
