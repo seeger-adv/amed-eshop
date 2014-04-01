@@ -34,6 +34,9 @@ public class Product {
 	@JoinColumn(name = "category")
 	private Category category;
 
+	@Column
+	private String image;
+
 	public String getSlug() {
 		return this.slug;
 	}
@@ -64,5 +67,13 @@ public class Product {
 
 	public Category getCategory() {
 		return this.category;
+	}
+
+	public String getImage() {
+		return this.image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }
