@@ -1,7 +1,7 @@
 package de.adv_boeblingen.seegerj.amed.eshop.api;
 
-import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
+import javax.persistence.criteria.CriteriaQuery;
 
 public interface Filter {
-	boolean filter(Product input);
+	boolean filter(CriteriaQuery<?> input);
 }
