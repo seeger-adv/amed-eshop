@@ -34,9 +34,21 @@ public class ProductListing {
 	@Parameter(value = "-1")
 	private String max;
 
+	@Parameter(value = "-1", required = false)
+	private int characterlimit;
+
 	public Set<Product> getProducts() {
 		Filter<Product> productFilter = this.filterFactory.getProductFilter(this.filter);
 		int maxProducts = Integer.parseInt(this.max);
 		return this.catalog.getProducts(productFilter, maxProducts);
+	}
+
+	public String getDescription() {
+		String retval = this.product.getDescription();
+		if (this.characterlimit != -1 && retval.length() > this.characterlimit) {
+			return retval.substring(0, this.characterlimit) + '\u2026';
+		}
+
+		return retval;
 	}
 }

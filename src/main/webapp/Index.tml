@@ -5,5 +5,5 @@
         <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
       </div>
 
-      <t:ProductListing max="literal:3" filter="literal:fav:" title="Other Customers also liked&hellip;" />
+      <t:ProductListing max="literal:3" filter="literal:fav:" title="Other Customers also liked&hellip;" characterlimit="250" />
 </html>
