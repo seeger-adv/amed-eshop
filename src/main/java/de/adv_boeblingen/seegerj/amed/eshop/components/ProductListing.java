@@ -34,9 +34,12 @@ public class ProductListing {
 	}
 
 	private Filter<Product> getFilter(String input) {
-		System.out.println("asdf: " + input);
-
-		String categoryString = input.substring(input.lastIndexOf(':') + 1);
+		String categoryString;
+		if (input != null) {
+			categoryString = input.substring(input.lastIndexOf(':') + 1);
+		} else {
+			categoryString = "null";
+		}
 
 		Long category = null;
 		if (!categoryString.equals("null")) {
