@@ -1,11 +1,14 @@
 <div class="row" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
-    <div class="col-lg-4" t:type="loop" source="categories" value="category">
-        <h3>${category.slug} <a t:type="pagelink"
-            t:page="Browse"
-            context="category.id"
-            class="btn btn-primary"
-            role="button"> &raquo;</a></h3>
-    </div>
+    <t:if test="categories">
+        <h2>${title}</h2>
+        <div class="col-lg-4" t:type="loop" source="categories" value="category">
+            <h3><a t:type="pagelink"
+                t:page="Browse"
+                context="category.id"
+                class="btn btn-primary"
+                role="button">${category.slug} &raquo;</a></h3>
+        </div>
+    </t:if>
     <t:if test="categories" negate="true">
       <p>No categories available!</p>
     </t:if>

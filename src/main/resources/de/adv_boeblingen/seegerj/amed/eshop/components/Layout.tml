@@ -31,6 +31,7 @@
 
       <t:body/>
 
+      <div class="clearfix" />
       <div class="footer">
         <p>&copy; Company 2014</p>
       </div>
