@@ -23,6 +23,10 @@ public class ProductListing {
 	@Property
 	private Product product;
 
+	@Property
+	@Parameter(defaultPrefix = "literal")
+	private String title;
+
 	@Parameter(allowNull = true)
 	private String filter;
 

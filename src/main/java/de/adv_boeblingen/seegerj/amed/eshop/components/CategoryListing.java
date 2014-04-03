@@ -21,6 +21,10 @@ public class CategoryListing {
 	@Property
 	private Category category;
 
+	@Property
+	@Parameter(defaultPrefix = "literal")
+	private String title;
+
 	@Parameter(allowNull = true)
 	private String filter;
 

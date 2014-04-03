@@ -1,17 +1,20 @@
 <div class="row" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
-	<div class="col-lg-4 product"  t:type="loop" source="products" value="product">
-		<h3>${product.slug}</h3>
-		<img src="${product.image}" alt="Image of ${product.slug}" />
-		<div class="caption">
-			<p>${product.description}</p>
-			<p><a t:type="pagelink"
-				t:page="Product"
-				context="product.id"
-				class="btn btn-primary"
-				role="button">View details &raquo;</a>
-			</p>
-		</div>
-	</div>
+    <t:if test="products">
+        <h2>${title}</h2>
+    	<div class="col-lg-4 product"  t:type="loop" source="products" value="product">
+    		<h3>${product.slug}</h3>
+    		<img src="${product.image}" alt="Image of ${product.slug}" />
+    		<div class="caption">
+    			<p>${product.description}</p>
+    			<p><a t:type="pagelink"
+    				t:page="Product"
+    				context="product.id"
+    				class="btn btn-primary"
+    				role="button">View details &raquo;</a>
+    			</p>
+    		</div>
+    	</div>
+	</t:if>
 	<t:if test="products" negate="true">
       <p>No Products matching your criteria found!</p>
     </t:if>

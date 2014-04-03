@@ -1,7 +1,4 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-  <h2>Categories</h2>
-  <t:categoryListing  filter="${categoryFilter}" />
-
-  <h2>Products</h2>
-  <t:ProductListing filter="${productFilter}" />
+  <t:categoryListing  filter="${categoryFilter}" title="Categories" />
+  <t:ProductListing filter="${productFilter}" title="Products" />
 </html>
