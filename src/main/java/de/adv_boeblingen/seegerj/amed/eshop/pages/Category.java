@@ -9,6 +9,8 @@ public class Category {
 	@Inject
 	private CategoryDao categoryDao;
 
+	private String query;
+
 	@Property
 	private de.adv_boeblingen.seegerj.amed.eshop.model.database.Category category;
 
@@ -16,7 +18,15 @@ public class Category {
 		this.category = this.categoryDao.getCategory(categoryId);
 	}
 
+	void onActivate(String query) {
+		this.query = query;
+	}
+
 	public String getCategoryFilter() {
+		if (this.query != null) {
+			return "query:" + this.query;
+		}
+
 		if (this.category == null) {
 			return "null";
 		} else {
@@ -25,6 +35,10 @@ public class Category {
 	}
 
 	public String getProductFilter() {
+		if (this.query != null) {
+			return "query:" + this.query;
+		}
+
 		if (this.category == null) {
 			return "null";
 		} else {
