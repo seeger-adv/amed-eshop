@@ -1,0 +1,10 @@
+<div class="${layout}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+  <form t:type="form" t:id="searchForm" class="form-search" role="form">
+     <t:textfield
+          type="text"
+          value="query"
+          class="form-control"
+          placeholder="Suche"
+          t:validate="required,minlength=3" />
+  </form>
+</div>

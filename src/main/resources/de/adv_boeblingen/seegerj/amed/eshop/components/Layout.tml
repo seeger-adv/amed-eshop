@@ -22,7 +22,8 @@
         <div class="row">
           <img src="${context:img/icon.jpg}" class="col-lg-1" />
           <h3 class="col-lg-2">${message:ApplicationName}</h3>
-          <t:ShoppingCart layout="col-lg-offset-6 col-lg-1" />
+          <t:SearchField layout="col-lg-offset-4 col-lg-2" />
+          <t:ShoppingCart layout="col-lg-1" />
           <t:UserComponent layout="col-lg-2" />
         </div>
         <t:NavBar/>
