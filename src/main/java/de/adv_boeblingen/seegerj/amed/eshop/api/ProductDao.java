@@ -9,16 +9,16 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
  * 
  * @author jan
  */
-public interface Catalog {
+public interface ProductDao {
 	/**
 	 * Returns a {@link Set} of {@link Product}s matching the criteria of the
-	 * {@link Filter}.
+	 * {@link ProductFilter}.
 	 * 
 	 * @param filter
 	 *            Filter or null for all Products.
 	 * @return Set of Products.
 	 */
-	Set<Product> getProducts(Filter filter);
+	Set<Product> getProducts(Filter<Product> filter, int max);
 
 	/**
 	 * Returns a single Product as specified by its id.

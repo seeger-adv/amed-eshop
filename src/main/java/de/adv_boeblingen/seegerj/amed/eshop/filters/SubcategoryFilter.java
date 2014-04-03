@@ -9,26 +9,19 @@ import javax.persistence.criteria.Root;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Category;
-import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
-public class CategoryFilter implements Filter<Product> {
+public class SubcategoryFilter implements Filter<Category> {
 
 	private final Long category;
 
-	public CategoryFilter(Long category) {
+	public SubcategoryFilter(Long category) {
 		this.category = category;
 	}
 
 	@Override
-	public void filter(EntityManager em, CriteriaBuilder cb, Root<Product> root, CriteriaQuery<Product> query) {
-		Path<Long> field = root.<Category> get("category").<Long> get("id");
-
-		Predicate condition;
-		if (this.category == null) {
-			condition = cb.isNull(field);
-		} else {
-			condition = cb.equal(field, this.category);
-		}
+	public void filter(EntityManager em, CriteriaBuilder cb, Root<Category> root, CriteriaQuery<Category> query) {
+		Path<Long> field = root.<Category> get("parent").<Long> get("id");
+		Predicate condition = cb.equal(field, this.category);
 		query.where(condition);
 	}
 }

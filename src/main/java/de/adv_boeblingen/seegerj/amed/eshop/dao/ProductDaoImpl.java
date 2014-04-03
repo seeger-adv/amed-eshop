@@ -10,29 +10,33 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import de.adv_boeblingen.seegerj.amed.eshop.api.Catalog;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
+import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider.DatabaseRunnable;
 
-public class CatalogDao implements Catalog {
+public class ProductDaoImpl implements ProductDao {
 	@Override
-	public Set<Product> getProducts(final Filter filter) {
+	public Set<Product> getProducts(final Filter<Product> filter, final int max) {
 		return DatabaseProvider.runQuery(new DatabaseRunnable<Set<Product>>() {
 			@Override
 			public Set<Product> run(EntityManager manager, EntityTransaction transaction) {
 				CriteriaBuilder builder = manager.getCriteriaBuilder();
-				CriteriaQuery<Product> criteria = builder.createQuery(Product.class);
+				CriteriaQuery<Product> query = builder.createQuery(Product.class);
 
-				@SuppressWarnings("unused")
-				Root<Product> root = criteria.from(Product.class);
+				Root<Product> root = query.from(Product.class);
+				query.select(root);
 
 				if (filter != null) {
-					filter.filter(null);
+					filter.filter(manager, builder, root, query);
 				}
 
-				TypedQuery<Product> typedQuery = manager.createQuery(criteria);
+				TypedQuery<Product> typedQuery = manager.createQuery(query);
+				if (max != -1) {
+					typedQuery.setMaxResults(max);
+				}
+
 				return new HashSet<Product>(typedQuery.getResultList());
 			}
 		});

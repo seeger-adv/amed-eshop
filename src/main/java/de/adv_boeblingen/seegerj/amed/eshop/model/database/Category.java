@@ -23,7 +23,7 @@ public class Category {
 	@Id
 	@Column(name = "categoryid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	@Column
 	private String slug;
@@ -33,7 +33,10 @@ public class Category {
 	private Category parent;
 
 	@OneToMany(mappedBy = "parent")
-	private final Set<Category> children = new HashSet<Category>();
+	private final Set<Category> subcategories = new HashSet<Category>();
+
+	@OneToMany(mappedBy = "category")
+	private final Set<Product> products = new HashSet<Product>();
 
 	public String getSlug() {
 		return this.slug;
@@ -43,11 +46,15 @@ public class Category {
 		this.slug = slug;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
-	public Set<Category> getChildren() {
-		return this.children;
+	public Set<Category> getSubcategories() {
+		return this.subcategories;
+	}
+
+	public Set<Product> getProducts() {
+		return this.products;
 	}
 }

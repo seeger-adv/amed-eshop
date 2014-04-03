@@ -18,11 +18,11 @@ public class NavBar {
 	private String pageName;
 
 	public String[] getPageNames() {
-		return new String[] { "Index", "Account", "About", "Contact" };
+		return new String[] { "Index", "Browse", "Account", "About", "Contact" };
 	}
 
 	public String getPageLabel() {
-		return messages.get("PAGELABEL_" + pageName);
+		return this.messages.get("PAGELABEL_" + this.pageName);
 	}
 
 	public String getTabClass() {
