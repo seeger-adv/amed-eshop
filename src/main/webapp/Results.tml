@@ -1,0 +1,4 @@
+<html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+   <h2>Search Results<small>${query}</small></h2>
+  <t:ProductListing filter="${productFilter}" />
+</html>

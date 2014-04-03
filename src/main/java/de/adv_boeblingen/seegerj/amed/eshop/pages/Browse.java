@@ -4,13 +4,14 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Category;
 
 public class Browse {
 	@Inject
 	private CategoryDao categoryDao;
 
 	@Property
-	private de.adv_boeblingen.seegerj.amed.eshop.model.database.Category category;
+	private Category category;
 
 	void onActivate(long categoryId) {
 		this.category = this.categoryDao.getCategory(categoryId);

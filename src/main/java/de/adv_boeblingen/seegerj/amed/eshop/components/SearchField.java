@@ -9,6 +9,8 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
+import de.adv_boeblingen.seegerj.amed.eshop.pages.Results;
+
 public class SearchField {
 	@Property
 	private String query;
@@ -24,7 +26,6 @@ public class SearchField {
 	private String layout;
 
 	Link onSuccess() {
-		return this.linksource.createPageRenderLinkWithContext(
-				de.adv_boeblingen.seegerj.amed.eshop.pages.Browse.class, "query:" + this.query);
+		return this.linksource.createPageRenderLinkWithContext(Results.class, "query:" + this.query);
 	}
 }
