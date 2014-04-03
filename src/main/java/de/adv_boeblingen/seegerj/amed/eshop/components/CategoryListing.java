@@ -21,18 +21,22 @@ public class CategoryListing {
 	@Parameter(allowNull = true)
 	private String filter;
 
-	private Category current;
-
 	public Set<Category> getCategories() {
 		Filter<Category> categoryFilter = getFilter(this.filter);
 		return this.categoryDao.getCategories(categoryFilter);
 	}
 
 	private Filter<Category> getFilter(String input) {
-		return new SubcategoryFilter(this.current);
-	}
+		System.out.println("asdf: " + input);
 
-	void onActivate(long categoryId) {
-		this.current = this.categoryDao.getCategory(categoryId);
+		String categoryString = input.substring(input.lastIndexOf(':') + 1);
+		if (categoryString.equals("null")) {
+			this.category = null;
+		} else {
+			Long categoryId = Long.valueOf(categoryString);
+			this.category = this.categoryDao.getCategory(categoryId);
+		}
+
+		return new SubcategoryFilter(this.category);
 	}
 }

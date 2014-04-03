@@ -29,7 +29,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				query.select(root);
 
 				if (filter != null) {
-					filter.filter(manager, builder, query);
+					filter.filter(manager, builder, root, query);
 				}
 
 				TypedQuery<Category> typedQuery = manager.createQuery(query);

@@ -29,7 +29,7 @@ public class ProductDaoImpl implements ProductDao {
 				query.select(root);
 
 				if (filter != null) {
-					filter.filter(manager, builder, query);
+					filter.filter(manager, builder, root, query);
 				}
 
 				TypedQuery<Product> typedQuery = manager.createQuery(query);

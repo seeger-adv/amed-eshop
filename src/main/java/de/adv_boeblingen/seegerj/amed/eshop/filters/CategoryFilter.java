@@ -15,13 +15,11 @@ public class CategoryFilter implements Filter<Product> {
 	private final Category category;
 
 	public CategoryFilter(Category category) {
-		super();
 		this.category = category;
 	}
 
 	@Override
-	public void filter(EntityManager em, CriteriaBuilder cb, CriteriaQuery<Product> query) {
-		Root<Product> root = query.from(Product.class);
+	public void filter(EntityManager em, CriteriaBuilder cb, Root<Product> root, CriteriaQuery<Product> query) {
 		Path<Category> field = root.<Category> get("category");
 		query.where(cb.equal(field, this.category));
 	}

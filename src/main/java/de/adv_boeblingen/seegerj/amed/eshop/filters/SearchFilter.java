@@ -18,9 +18,8 @@ public class SearchFilter implements Filter<Product> {
 	}
 
 	@Override
-	public void filter(EntityManager em, CriteriaBuilder cb, CriteriaQuery<Product> query) {
+	public void filter(EntityManager em, CriteriaBuilder cb, Root<Product> root, CriteriaQuery<Product> query) {
 		String searchTerm = "%" + this.query + "%";
-		Root<Product> root = query.from(Product.class);
 		Path<String> field = root.<String> get("description");
 		query.where(cb.like(field, searchTerm));
 	}

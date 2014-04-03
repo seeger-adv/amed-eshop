@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
@@ -18,14 +19,15 @@ public class SubcategoryFilter implements Filter<Category> {
 	}
 
 	@Override
-	public void filter(EntityManager em, CriteriaBuilder cb, CriteriaQuery<Category> query) {
-		Root<Category> root = query.from(Category.class);
+	public void filter(EntityManager em, CriteriaBuilder cb, Root<Category> root, CriteriaQuery<Category> query) {
+		Path<Long> field = root.<Category> get("parent").<Long> get("id");
 
-		Path<Category> field = root.<Category> get("parent");
-		if (this.category != null) {
-			query.where(cb.equal(field, this.category));
+		Predicate condition;
+		if (this.category == null) {
+			condition = cb.isNull(field);
 		} else {
-			query.where(cb.isNull(field));
+			condition = cb.equal(field, this.category.getId());
 		}
+		query.where(condition);
 	}
 }

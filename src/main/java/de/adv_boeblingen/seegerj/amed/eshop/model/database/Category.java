@@ -23,7 +23,7 @@ public class Category {
 	@Id
 	@Column(name = "categoryid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	@Column
 	private String slug;
@@ -46,7 +46,7 @@ public class Category {
 		this.slug = slug;
 	}
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
