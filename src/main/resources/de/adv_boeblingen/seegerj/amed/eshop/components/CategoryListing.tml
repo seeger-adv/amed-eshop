@@ -6,4 +6,7 @@
             class="btn btn-primary"
             role="button"> &raquo;</a></h3>
     </div>
+    <t:if test="categories" negate="true">
+      <p>No categories available!</p>
+    </t:if>
 </div>

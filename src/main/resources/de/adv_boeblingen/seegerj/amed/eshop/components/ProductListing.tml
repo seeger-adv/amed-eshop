@@ -12,4 +12,7 @@
 			</p>
 		</div>
 	</div>
+	<t:if test="products" negate="true">
+      <p>No Products matching your criteria found!</p>
+    </t:if>
 </div>
