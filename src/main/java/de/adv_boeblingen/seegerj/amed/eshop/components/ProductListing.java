@@ -7,8 +7,9 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
+import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
+import de.adv_boeblingen.seegerj.amed.eshop.filters.CategoryFilter;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
 @Import(stylesheet = { "context:css/productlisting.css" })
@@ -33,6 +34,15 @@ public class ProductListing {
 	}
 
 	private Filter<Product> getFilter(String input) {
-		return null;
+		System.out.println("asdf: " + input);
+
+		String categoryString = input.substring(input.lastIndexOf(':') + 1);
+
+		Long category = null;
+		if (!categoryString.equals("null")) {
+			category = Long.valueOf(categoryString);
+		}
+
+		return new CategoryFilter(category);
 	}
 }

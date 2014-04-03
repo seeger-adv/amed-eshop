@@ -12,9 +12,9 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.database.Category;
 
 public class SubcategoryFilter implements Filter<Category> {
 
-	private final Category category;
+	private final Long category;
 
-	public SubcategoryFilter(Category category) {
+	public SubcategoryFilter(Long category) {
 		this.category = category;
 	}
 
@@ -26,7 +26,7 @@ public class SubcategoryFilter implements Filter<Category> {
 		if (this.category == null) {
 			condition = cb.isNull(field);
 		} else {
-			condition = cb.equal(field, this.category.getId());
+			condition = cb.equal(field, this.category);
 		}
 		query.where(condition);
 	}

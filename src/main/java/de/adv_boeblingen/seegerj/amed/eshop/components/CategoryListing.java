@@ -27,16 +27,13 @@ public class CategoryListing {
 	}
 
 	private Filter<Category> getFilter(String input) {
-		System.out.println("asdf: " + input);
-
 		String categoryString = input.substring(input.lastIndexOf(':') + 1);
-		if (categoryString.equals("null")) {
-			this.category = null;
-		} else {
-			Long categoryId = Long.valueOf(categoryString);
-			this.category = this.categoryDao.getCategory(categoryId);
+
+		Long category = null;
+		if (!categoryString.equals("null")) {
+			category = Long.valueOf(categoryString);
 		}
 
-		return new SubcategoryFilter(this.category);
+		return new SubcategoryFilter(category);
 	}
 }
