@@ -5,7 +5,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
 
-public class Category {
+public class Browse {
 	@Inject
 	private CategoryDao categoryDao;
 
@@ -14,12 +14,12 @@ public class Category {
 	@Property
 	private de.adv_boeblingen.seegerj.amed.eshop.model.database.Category category;
 
-	void onActivate(long categoryId) {
-		this.category = this.categoryDao.getCategory(categoryId);
-	}
-
-	void onActivate(String query) {
-		this.query = query;
+	void onActivate(Object param) {
+		if (param instanceof Long) {
+			this.category = this.categoryDao.getCategory((Long) param);
+		} else {
+			this.query = (String) param;
+		}
 	}
 
 	public String getCategoryFilter() {

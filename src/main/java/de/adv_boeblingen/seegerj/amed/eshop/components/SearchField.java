@@ -25,6 +25,6 @@ public class SearchField {
 
 	Link onSuccess() {
 		return this.linksource.createPageRenderLinkWithContext(
-				de.adv_boeblingen.seegerj.amed.eshop.pages.Category.class, this.query);
+				de.adv_boeblingen.seegerj.amed.eshop.pages.Browse.class, "query:" + this.query);
 	}
 }
