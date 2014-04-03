@@ -10,18 +10,12 @@ import javax.persistence.criteria.Root;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Category;
 
-public class SubcategoryFilter implements Filter<Category> {
-
-	private final Long category;
-
-	public SubcategoryFilter(Long category) {
-		this.category = category;
-	}
+public class NullCategoryFilter implements Filter<Category> {
 
 	@Override
 	public void filter(EntityManager em, CriteriaBuilder cb, Root<Category> root, CriteriaQuery<Category> query) {
 		Path<Long> field = root.<Category> get("parent").<Long> get("id");
-		Predicate condition = cb.equal(field, this.category);
+		Predicate condition = cb.isNull(field);
 		query.where(condition);
 	}
 }

@@ -6,6 +6,7 @@ import org.apache.tapestry5.ioc.ServiceBinder;
 import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
+import de.adv_boeblingen.seegerj.amed.eshop.api.FilterFactory;
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.CategoryDaoImpl;
@@ -26,5 +27,6 @@ public class AppModule {
 		binder.bind(UserDao.class, UserDaoImpl.class);
 		binder.bind(ProductDao.class, ProductDaoImpl.class);
 		binder.bind(CategoryDao.class, CategoryDaoImpl.class);
+		binder.bind(FilterFactory.class, FilterFactoryImpl.class);
 	}
 }

@@ -8,14 +8,17 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
+import de.adv_boeblingen.seegerj.amed.eshop.api.FilterFactory;
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
-import de.adv_boeblingen.seegerj.amed.eshop.filters.CategoryFilter;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
 @Import(stylesheet = { "context:css/productlisting.css" })
 public class ProductListing {
 	@Inject
 	private ProductDao catalog;
+
+	@Inject
+	private FilterFactory filterFactory;
 
 	@Property
 	private Product product;
@@ -28,24 +31,8 @@ public class ProductListing {
 	private String max;
 
 	public Set<Product> getProducts() {
-		Filter<Product> productFilter = getFilter(this.filter);
+		Filter<Product> productFilter = this.filterFactory.getProductFilter(this.filter);
 		int maxProducts = Integer.parseInt(this.max);
 		return this.catalog.getProducts(productFilter, maxProducts);
-	}
-
-	private Filter<Product> getFilter(String input) {
-		String categoryString;
-		if (input != null) {
-			categoryString = input.substring(input.lastIndexOf(':') + 1);
-		} else {
-			categoryString = "null";
-		}
-
-		Long category = null;
-		if (!categoryString.equals("null")) {
-			category = Long.valueOf(categoryString);
-		}
-
-		return new CategoryFilter(category);
 	}
 }

@@ -8,12 +8,15 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.Filter;
-import de.adv_boeblingen.seegerj.amed.eshop.filters.SubcategoryFilter;
+import de.adv_boeblingen.seegerj.amed.eshop.api.FilterFactory;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Category;
 
 public class CategoryListing {
 	@Inject
 	private CategoryDao categoryDao;
+
+	@Inject
+	private FilterFactory filterFactory;
 
 	@Property
 	private Category category;
@@ -22,18 +25,7 @@ public class CategoryListing {
 	private String filter;
 
 	public Set<Category> getCategories() {
-		Filter<Category> categoryFilter = getFilter(this.filter);
+		Filter<Category> categoryFilter = this.filterFactory.getCategoryFilter(this.filter);
 		return this.categoryDao.getCategories(categoryFilter);
-	}
-
-	private Filter<Category> getFilter(String input) {
-		String categoryString = input.substring(input.lastIndexOf(':') + 1);
-
-		Long category = null;
-		if (!categoryString.equals("null")) {
-			category = Long.valueOf(categoryString);
-		}
-
-		return new SubcategoryFilter(category);
 	}
 }
