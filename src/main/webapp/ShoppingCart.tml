@@ -11,12 +11,17 @@
             <tbody>
               <tr t:type="loop" source="items" value="item">
                 <td>${item.product.slug}</td>
-                <td>${item.amount}</td>
+                <td>
+                  ${item.amount}
+                  <a t:id="add" class="btn btn-small">+</a>
+                  <a t:id="sub" class="btn btn-small">-</a>
+                </td>
                 <td>${item.product.price}</td>
                 <td>${total}</td>
               </tr>
             </tbody>
            </table>
            
-      <a href="#">Checkout</a>
+           <a t:id="checkout" class="btn btn-primary"
+                    role="button">Checkout</a>
 </html>
