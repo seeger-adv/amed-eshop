@@ -1,7 +1,7 @@
 <div class="${layout}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
-  <form t:type="form" t:id="searchForm" class="form-search" role="form">
+  <form t:type="form" t:id="searchForm" class="form-search" role="form" autofocus="false">
      <t:textfield
-          type="text"
+          type="search"
           value="query"
           class="form-control"
           placeholder="Suche"
