@@ -18,6 +18,9 @@ public class ShoppingCart {
 	@Component(parameters = { "event=add", "context=item.id" })
 	private EventLink add;
 
+	@Component(parameters = { "event=del", "context=item.id" })
+	private EventLink del;
+
 	@Component(parameters = { "event=sub", "context=item.id" })
 	private EventLink sub;
 
@@ -44,6 +47,11 @@ public class ShoppingCart {
 	public void onSub(String columnId) {
 		Product item = getItem(columnId);
 		shoppingCart.remove(item);
+	}
+
+	public void onDel(String columnId) {
+		Product item = getItem(columnId);
+		shoppingCart.clear(item);
 	}
 
 	private Product getItem(String columnId) {

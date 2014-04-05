@@ -15,6 +15,7 @@
                   ${amount}
                   <a t:id="add" class="btn btn-small">+</a>
                   <a t:id="sub" class="btn btn-small">-</a>
+                  <a t:id="del" class="btn btn-small">x</a>
                 </td>
                 <td>${item.price}</td>
                 <td>${total}</td>

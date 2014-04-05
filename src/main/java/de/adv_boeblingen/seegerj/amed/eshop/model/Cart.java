@@ -24,8 +24,12 @@ public class Cart {
 		int amount = getNewAmount(product, -1);
 
 		if (amount == 0) {
-			items.remove(product);
+			clear(product);
 		}
+	}
+
+	public void clear(Product product) {
+		items.remove(product);
 	}
 
 	private int getNewAmount(Product item, int direction) {
