@@ -1,15 +1,41 @@
 package de.adv_boeblingen.seegerj.amed.eshop.model;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
-import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
 public class Cart {
-	private final Set<Item> items = new HashSet<Item>();
+	private final Map<Product, Integer> items = new HashMap<Product, Integer>();
 
-	public Collection<Item> getItems() {
+	public Map<Product, Integer> getItems() {
 		return this.items;
+	}
+
+	public void add(Product product) {
+		if (!items.containsKey(product)) {
+			items.put(product, 0);
+		}
+
+		getNewAmount(product, 1);
+	}
+
+	public void remove(Product product) {
+		int amount = getNewAmount(product, -1);
+
+		if (amount == 0) {
+			clear(product);
+		}
+	}
+
+	public void clear(Product product) {
+		items.remove(product);
+	}
+
+	private int getNewAmount(Product item, int direction) {
+		int oldAmount = items.get(item);
+		int newAmount = oldAmount + direction;
+		items.put(item, newAmount);
+		return newAmount;
 	}
 }

@@ -9,7 +9,6 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
-import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
 
 public class Product {
 	@Inject
@@ -38,9 +37,6 @@ public class Product {
 	}
 
 	void onAdd(String productId) {
-		Item item = new Item();
-		item.setProduct(this.product);
-		item.setAmount(1);
-		this.shoppingCart.getItems().add(item);
+		this.shoppingCart.add(product);
 	}
 }
