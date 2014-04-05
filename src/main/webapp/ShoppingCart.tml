@@ -10,18 +10,17 @@
             </thead>
             <tbody>
               <tr t:type="loop" source="items" value="item">
-                <td>${item.product.slug}</td>
+                <td>${item.slug}</td>
                 <td>
-                  ${item.amount}
+                  ${amount}
                   <a t:id="add" class="btn btn-small">+</a>
                   <a t:id="sub" class="btn btn-small">-</a>
                 </td>
-                <td>${item.product.price}</td>
+                <td>${item.price}</td>
                 <td>${total}</td>
               </tr>
             </tbody>
            </table>
            
-           <a t:id="checkout" class="btn btn-primary"
-                    role="button">Checkout</a>
+           <t:pagelink page="Checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</t:pagelink>
 </html>

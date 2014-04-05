@@ -1,6 +1,6 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
-import java.util.Collection;
+import java.util.Set;
 
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
@@ -8,7 +8,7 @@ import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.EventLink;
 
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
-import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
 public class ShoppingCart {
 	@Property
@@ -22,22 +22,37 @@ public class ShoppingCart {
 	private EventLink sub;
 
 	@Property
-	private Item item;
+	private Product item;
 
-	public Collection<Item> getItems() {
-		return this.shoppingCart.getItems();
+	public Set<Product> getItems() {
+		return this.shoppingCart.getItems().keySet();
 	}
 
 	public float getTotal() {
-		return this.item.getAmount() * this.item.getProduct().getPrice();
+		return getAmount() * this.item.getPrice();
+	}
+
+	public int getAmount() {
+		return this.shoppingCart.getItems().get(this.item);
 	}
 
 	public void onAdd(String columnId) {
-		int amount = this.item.getAmount();
-		this.item.setAmount(amount + 1);
+		Product item = getItem(columnId);
+		shoppingCart.add(item);
 	}
 
 	public void onSub(String columnId) {
-		int amount = this.item.getAmount();
+		Product item = getItem(columnId);
+		shoppingCart.remove(item);
+	}
+
+	private Product getItem(String columnId) {
+		int itemId = Integer.parseInt(columnId);
+		for (Product item : getItems()) {
+			if (itemId == item.getId()) {
+				return item;
+			}
+		}
+		return null;
 	}
 }
