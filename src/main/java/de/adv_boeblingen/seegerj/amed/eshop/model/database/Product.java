@@ -76,4 +76,22 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	@Override
+	public int hashCode() {
+		int hash = 1;
+		hash = (int) (hash * 17 + this.id);
+		hash = hash * 31 + this.slug.hashCode();
+		hash = hash * 13 + this.description.hashCode();
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Product) {
+			Product other = (Product) obj;
+			return other.id == this.id;
+		}
+		return false;
+	}
 }
