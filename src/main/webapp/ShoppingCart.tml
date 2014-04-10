@@ -13,15 +13,17 @@
                 <td>${item.slug}</td>
                 <td>
                   ${amount}
-                  <a t:id="add" class="btn btn-small">+</a>
-                  <a t:id="sub" class="btn btn-small">-</a>
-                  <a t:id="del" class="btn btn-small">x</a>
+                  <div class="btn-group btn-group-xs">
+                      <a t:id="add" class="btn"><span class="glyphicon glyphicon-plus"></span></a>
+                      <a t:id="sub" class="btn"><span class="glyphicon glyphicon-minus"></span></a>
+                      <a t:id="del" class="btn"><span class="glyphicon glyphicon-trash"></span></a>
+                  </div>
                 </td>
                 <td>${item.price}</td>
                 <td>${total}</td>
               </tr>
             </tbody>
            </table>
-           
+
            <t:pagelink page="Checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</t:pagelink>
 </html>
