@@ -1,5 +1,7 @@
 package de.adv_boeblingen.seegerj.amed.eshop.model.database;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,6 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
 
@@ -30,11 +35,15 @@ public class Purchase {
 	@OneToMany
 	@JoinColumn(name = "purchase")
 	@OrderBy(value = "id")
-	private Set<Item> items;
+	private final Set<Item> items = new HashSet<Item>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer")
 	private Customer customer;
+
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
 
 	@Enumerated(EnumType.ORDINAL)
 	private ShippingState shippingState;
@@ -45,6 +54,27 @@ public class Purchase {
 
 	public Set<Item> getItems() {
 		return this.items;
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		this.date = new Date();
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public ShippingState getShippingState() {
