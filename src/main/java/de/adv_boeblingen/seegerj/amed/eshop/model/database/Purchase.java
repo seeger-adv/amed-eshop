@@ -23,6 +23,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.DynamicInsert;
 
 import de.adv_boeblingen.seegerj.amed.eshop.model.ShippingState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.payment.PaymentState;
 
 @Entity
 @DynamicInsert
@@ -48,6 +49,9 @@ public class Purchase {
 	@Enumerated(EnumType.ORDINAL)
 	private ShippingState shippingState;
 
+	@Enumerated(EnumType.ORDINAL)
+	private PaymentState paymentState;
+
 	public int getId() {
 		return this.id;
 	}
@@ -62,7 +66,7 @@ public class Purchase {
 	}
 
 	public Customer getCustomer() {
-		return customer;
+		return this.customer;
 	}
 
 	public void setCustomer(Customer customer) {
@@ -70,7 +74,7 @@ public class Purchase {
 	}
 
 	public Date getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(Date date) {
@@ -78,7 +82,7 @@ public class Purchase {
 	}
 
 	public ShippingState getShippingState() {
-		return shippingState;
+		return this.shippingState;
 	}
 
 	public void setShippingState(ShippingState shippingState) {
