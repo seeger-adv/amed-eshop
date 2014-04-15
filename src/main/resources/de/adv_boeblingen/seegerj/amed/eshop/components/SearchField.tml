@@ -1,10 +1,15 @@
 <div class="${layout}" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
   <form t:type="form" t:id="searchForm" class="form-search" role="form" autofocus="false">
-     <t:textfield
-          type="search"
-          value="query"
-          class="form-control"
-          placeholder="Suche"
-          t:validate="required,minlength=3" />
+     <div class="input-group">
+	     <t:textfield
+	          type="search"
+	          value="query"
+	          class="form-control"
+	          placeholder="Suche"
+	          t:validate="required,minlength=3" />
+	      <span class="input-group-btn">
+	      	<button class="btn btn-default" type="submit">Go!</button>
+	      </span>
+     </div>
   </form>
 </div>

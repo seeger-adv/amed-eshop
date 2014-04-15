@@ -8,6 +8,7 @@ import org.apache.tapestry5.corelib.components.EventLink;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
+import de.adv_boeblingen.seegerj.amed.eshop.model.Availability;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 
 public class Product {
@@ -28,8 +29,8 @@ public class Product {
 		return this.product;
 	}
 
-	public String getAvailability() {
-		return "Available";
+	public Availability getAvailability() {
+		return Availability.AVAILABLE;
 	}
 
 	void onActivate(long productId) {
