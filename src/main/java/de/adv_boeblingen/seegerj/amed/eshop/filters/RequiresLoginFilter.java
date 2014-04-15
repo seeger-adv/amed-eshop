@@ -66,6 +66,7 @@ public class RequiresLoginFilter
 		}
 
 		Link link = this.renderLinkSource.createPageRenderLink("Login");
+		link.addParameter("next", pageName);
 		this.response.sendRedirect(link);
 		return true;
 	}
