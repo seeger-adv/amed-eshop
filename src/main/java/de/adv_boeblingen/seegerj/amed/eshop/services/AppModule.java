@@ -1,5 +1,6 @@
 package de.adv_boeblingen.seegerj.amed.eshop.services;
 
+import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 
@@ -15,6 +16,10 @@ import de.adv_boeblingen.seegerj.amed.eshop.dao.UserDaoImpl;
 import de.adv_boeblingen.seegerj.amed.eshop.filters.RequiresLoginFilter;
 
 public class AppModule {
+	public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration) {
+		configuration.add("tapestry.hmac-passphrase", "machete schreibt keine sms!");
+	}
+
 	public static void contributeComponentRequestHandler(OrderedConfiguration<Object> configuration) {
 		configuration.addInstance("RequiresLogin", RequiresLoginFilter.class);
 	}

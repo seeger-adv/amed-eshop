@@ -1,13 +1,19 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">   
-        <div class="well col-lg-offset-2 col-lg-8">
+        <div class="col-lg-offset-2 col-lg-8">
           <div class="col-lg-9 col-lg-offset-3"><h3>${product.slug}</h3></div>
           <img src="${product.image}" class="col-lg-3" alt="Image of ${product.slug}" />
           <div class="col-lg-6">${product.description}</div>
-          <div class="col-lg-3">${availability}</div>
-          <div class="col-lg-3">${product.price}</div>
-          <div class="col-lg-3">
-            <a t:id="addToBasket" class="btn btn-primary"
-                    role="button">Add to Cart</a>
+          <div class="well col-lg-3">
+            <div>${product.price}</div>
+            <div>
+              <span class="label label-${availability.badge}">${availability}</span>
+            </div>
+            <div>
+              <a
+                t:id="addToBasket"
+                class="btn btn-primary"
+                role="button">Add to Cart</a>
+            </div>
           </div>
        </div>
 </html>
