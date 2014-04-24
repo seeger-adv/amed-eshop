@@ -19,6 +19,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import de.adv_boeblingen.seegerj.amed.eshop.model.payment.PaymentInfo;
+
 @Entity
 @DynamicUpdate
 @DynamicInsert
@@ -52,6 +54,11 @@ public class Customer {
 	@JoinColumn(name = "customer")
 	@OrderBy(value = "id")
 	private final Set<Purchase> purchase = new HashSet<Purchase>();
+
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name = "customer")
+	@OrderBy(value = "id")
+	private final Set<PaymentInfo> paymentInfo = new HashSet<PaymentInfo>();
 
 	public String getMail() {
 		return this.mail;
@@ -87,5 +94,9 @@ public class Customer {
 
 	public Set<Purchase> getPurchase() {
 		return purchase;
+	}
+
+	public Set<PaymentInfo> getPaymentInfo() {
+		return paymentInfo;
 	}
 }
