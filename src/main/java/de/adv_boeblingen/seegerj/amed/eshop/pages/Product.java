@@ -9,8 +9,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
-import de.adv_boeblingen.seegerj.amed.eshop.model.Availability;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.Availability;
 
 public class Product {
 	@Inject
