@@ -22,8 +22,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
 
-import de.adv_boeblingen.seegerj.amed.eshop.model.ShippingState;
-import de.adv_boeblingen.seegerj.amed.eshop.model.payment.PaymentState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.PaymentState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.ShippingState;
 
 @Entity
 @DynamicInsert

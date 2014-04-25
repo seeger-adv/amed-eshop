@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.model.payment;
+package de.adv_boeblingen.seegerj.amed.eshop.model.enums;
 
 public enum PaymentState {
 	PAID, UNPAID
