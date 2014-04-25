@@ -22,7 +22,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.DynamicInsert;
 
-import de.adv_boeblingen.seegerj.amed.eshop.model.ShippingState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.PaymentState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.ShippingState;
 
 @Entity
 @DynamicInsert
@@ -47,6 +48,9 @@ public class Purchase {
 
 	@Enumerated(EnumType.ORDINAL)
 	private ShippingState shippingState;
+
+	@Enumerated(EnumType.ORDINAL)
+	private PaymentState paymentState;
 
 	public int getId() {
 		return this.id;

@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.model;
+package de.adv_boeblingen.seegerj.amed.eshop.model.enums;
 
 public enum Availability {
 	AVAILABLE, FEW, OUT_OF_STOCK, REORDERED, UNKNOWN;
