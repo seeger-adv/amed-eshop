@@ -24,10 +24,10 @@ public class UserDaoImpl
 
 	@Override
 	public boolean register(final String mail, final String password) {
+		final Customer customer = createUser(mail, password);
 		DatabaseProvider.runTransaction(new DatabaseRunnable<Void>() {
 			@Override
 			public Void run(EntityManager manager, EntityTransaction transaction) {
-				Customer customer = createUser(mail, password);
 				manager.persist(customer);
 				return null;
 			}
@@ -42,5 +42,16 @@ public class UserDaoImpl
 		String cryptPassword = cryptService.crypt(password);
 		customer.setPassword(cryptPassword);
 		return customer;
+	}
+
+	@Override
+	public void updateUser(final Customer customer) {
+		DatabaseProvider.runTransaction(new DatabaseRunnable<Void>() {
+			@Override
+			public Void run(EntityManager manager, EntityTransaction transaction) {
+				manager.merge(customer);
+				return null;
+			}
+		});
 	}
 }
