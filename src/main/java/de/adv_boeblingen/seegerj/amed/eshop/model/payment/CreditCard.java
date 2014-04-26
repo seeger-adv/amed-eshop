@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class CreditCard
-		extends PaymentInfo {
+extends PaymentInfo {
 
 	@Column
 	private String owner;
@@ -38,5 +38,10 @@ public class CreditCard
 
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s%n%s%n", owner, number);
 	}
 }
