@@ -25,6 +25,18 @@ public class Address {
 	@JoinColumn(name = "customer")
 	private Customer customer;
 
+	@Column
+	private String name;
+
+	@Column
+	private String street;
+
+	@Column
+	private int zip;
+
+	@Column
+	private String city;
+
 	public int getId() {
 		return id;
 	}
@@ -35,5 +47,37 @@ public class Address {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public int getZip() {
+		return zip;
+	}
+
+	public void setZip(int zip) {
+		this.zip = zip;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 }
