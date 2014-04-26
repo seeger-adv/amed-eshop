@@ -1,10 +1,12 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
+import org.apache.tapestry5.annotations.ActivationRequestParameter;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
+import org.apache.tapestry5.services.ComponentSource;
 
 import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
@@ -18,6 +20,12 @@ public class AddPayment {
 
 	@Inject
 	private ApplicationStateManager stateManager;
+
+	@ActivationRequestParameter("next")
+	private String nextPage;
+
+	@Inject
+	private ComponentSource componentSource;
 
 	@Inject
 	private UserDao userDao;
@@ -51,6 +59,10 @@ public class AddPayment {
 	}
 
 	public Object onSuccess() {
-		return Checkout.class;
+		if (nextPage == null) {
+			return Account.class;
+		}
+
+		return this.componentSource.getPage(nextPage);
 	}
 }
