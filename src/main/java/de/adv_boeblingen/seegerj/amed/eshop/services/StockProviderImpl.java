@@ -24,7 +24,7 @@ public class StockProviderImpl
 			return Availability.FEW;
 		}
 
-		if (amount > 5) {
+		if (amount >= 5) {
 			return Availability.AVAILABLE;
 		}
 
