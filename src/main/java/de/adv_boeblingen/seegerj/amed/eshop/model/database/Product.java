@@ -30,6 +30,17 @@ public class Product {
 	@Column
 	private String slug;
 
+	@Column
+	private int itemsLeft = 0;
+
+	public int getItemsLeft() {
+		return itemsLeft;
+	}
+
+	public void setItemsLeft(int itemsLeft) {
+		this.itemsLeft = itemsLeft;
+	}
+
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "category")
 	private Category category;
