@@ -9,6 +9,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.FilterFactory;
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
+import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.CategoryDaoImpl;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.ProductDaoImpl;
@@ -33,5 +34,6 @@ public class AppModule {
 		binder.bind(ProductDao.class, ProductDaoImpl.class);
 		binder.bind(CategoryDao.class, CategoryDaoImpl.class);
 		binder.bind(FilterFactory.class, FilterFactoryImpl.class);
+		binder.bind(StockService.class, StockProviderImpl.class);
 	}
 }

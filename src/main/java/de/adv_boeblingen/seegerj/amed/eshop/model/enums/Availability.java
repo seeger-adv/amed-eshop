@@ -17,4 +17,20 @@ public enum Availability {
 			return "default";
 		}
 	}
+
+	@Override
+	public String toString() {
+		switch (this) {
+		case AVAILABLE:
+			return "Available";
+		case FEW:
+			return "Few";
+		case OUT_OF_STOCK:
+			return "Out of Stock";
+		case REORDERED:
+			return "Reordered";
+		default:
+			return "Unknown";
+		}
+	}
 }
