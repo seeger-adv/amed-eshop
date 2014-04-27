@@ -12,7 +12,6 @@ import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
-import de.adv_boeblingen.seegerj.amed.eshop.model.payment.CreditCard;
 import de.adv_boeblingen.seegerj.amed.eshop.model.payment.PaymentInfo;
 
 @RequiresLogin
@@ -43,7 +42,7 @@ public class AddPayment {
 	private Form addCardForm;
 
 	public void onValidateFromAddCardForm() {
-		CreditCard payment = new CreditCard();
+		PaymentInfo payment = new PaymentInfo();
 		payment.setOwner(cardholdername);
 		payment.setNumber(cardnumber);
 		payment.setCvv(cvv);
