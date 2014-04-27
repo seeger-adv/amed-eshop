@@ -28,4 +28,6 @@ public interface ProductDao {
 	 * @return found Product or null.
 	 */
 	Product getProduct(long productId);
+
+	void updateProduct(Product product);
 }

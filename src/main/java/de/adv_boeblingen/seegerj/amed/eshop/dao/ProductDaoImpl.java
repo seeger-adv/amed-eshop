@@ -51,4 +51,15 @@ public class ProductDaoImpl implements ProductDao {
 			}
 		});
 	}
+
+	@Override
+	public void updateProduct(final Product product) {
+		DatabaseProvider.runTransaction(new DatabaseRunnable<Void>() {
+			@Override
+			public Void run(EntityManager manager, EntityTransaction transaction) {
+				manager.merge(product);
+				return null;
+			}
+		});
+	}
 }
