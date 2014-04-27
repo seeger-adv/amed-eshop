@@ -1,19 +1,32 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
+import java.util.Map;
+
 import org.apache.tapestry5.Link;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.EventLink;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
 import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
+import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
+import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
 @RequiresLogin
 public class Checkout {
+
+	@Property
+	@SessionState
+	private Cart shoppingCart;
+
+	@Inject
+	private StockService stockService;
 
 	@Inject
 	private ApplicationStateManager stateManager;
@@ -48,4 +61,23 @@ public class Checkout {
 		return link;
 	}
 
+	@Component(parameters = { "event=send" })
+	private EventLink send;
+
+	public Object onSend() {
+		boolean allProductInStock = true;
+
+		Map<Product, Integer> cartItems = shoppingCart.getItems();
+		for (Product product : cartItems.keySet()) {
+			int amount = cartItems.get(product);
+			allProductInStock &= stockService.hasEnoughItems(product, amount);
+		}
+
+		if (allProductInStock) {
+			return Receipt.class;
+		}
+
+		// some items are not available!
+		return null;
+	}
 }
