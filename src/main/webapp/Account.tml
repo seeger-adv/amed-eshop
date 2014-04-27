@@ -23,29 +23,44 @@
     <div class="col-lg-4">
       <div class="panel panel-primary">
         <div class="panel-heading">
-		  <h3 class="panel-title">Payment information</h3>
-		</div>
-		<div class="panel-body">
-		  <div t:type="loop" source="customer.paymentInfo" value="payment">
-            <td>${payment}</td>
-          </div>
+          <h3 class="panel-title">Payment information</h3>
         </div>
-		<div class="panel-footer"><t:pagelink page="AddPayment" role="button" href="#" class="btn btn-primary">Add Payment Details &raquo;</t:pagelink></div>
+        <t:if test="customer.paymentInfo" negate="true">
+          <div class="panel-body">
+            <p>No Payment Information available!</p>
+          </div>
+        </t:if>
+        <t:if test="customer.paymentInfo">
+          <ul class="list-group">
+            <li class="list-group-item" t:type="loop" source="customer.paymentInfo" value="payment">${payment}</li>
+          </ul>
+        </t:if>
+        <div class="panel-footer">
+          <t:pagelink page="AddPayment" role="button" href="#" class="btn btn-primary">Add Payment Details &raquo;</t:pagelink>
+        </div>
       </div>
-          
+
       <div class="panel panel-primary">
         <div class="panel-heading">
-		  <h3 class="panel-title">Shipping Addresses</h3>
-		</div>
-		<div class="panel-body">
-		  <tr t:type="loop" source="customer.address" value="address">
-            <td>${address.name}</td>
-            <td>${address.street}</td>
-            <td>${address.zip}</td>
-            <td>${address.city}</td>
-          </tr>
-		</div>
-		<div class="panel-footer"><t:pagelink page="AddAddress" role="button" href="#" class="btn btn-primasry">Add an Address &raquo;</t:pagelink></div>
+          <h3 class="panel-title">Shipping Addresses</h3>
+        </div>
+        <t:if test="customer.address" negate="true">
+          <div class="panel-body">
+            <p>No Addresses available!</p>
+          </div>
+        </t:if>
+        <t:if test="customer.address">
+          <ul class="list-group">
+            <li class="list-group-item" t:type="loop" source="customer.address" value="address">
+              <p class="list-group-item-text">${address.name}</p>
+              <p class="list-group-item-text">${address.street}</p>
+              <p class="list-group-item-text">${address.zip}&nbsp;${address.city}</p>
+            </li>
+          </ul>
+        </t:if>
+        <div class="panel-footer">
+          <t:pagelink page="AddAddress" role="button" href="#" class="btn btn-primasry">Add an Address &raquo;</t:pagelink>
+        </div>
       </div>
     </div>
   </div>
