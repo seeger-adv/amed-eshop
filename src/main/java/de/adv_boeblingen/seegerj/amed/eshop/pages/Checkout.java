@@ -39,13 +39,13 @@ public class Checkout {
 		addresses = customer.getAddress();
 		if (addresses.isEmpty()) {
 			link = this.renderLinkSource.createPageRenderLink(AddAddress.class);
-			link.addParameterValue("next", Checkout.class);
+			link.addParameterValue("next", "Checkout");
 		}
 
 		paymentInfo = customer.getPaymentInfo();
 		if (paymentInfo.isEmpty()) {
 			link = this.renderLinkSource.createPageRenderLink(AddPayment.class);
-			link.addParameterValue("next", Checkout.class);
+			link.addParameterValue("next", "Checkout");
 		}
 
 		return link;
