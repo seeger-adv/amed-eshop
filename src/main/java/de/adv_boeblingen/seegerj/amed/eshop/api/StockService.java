@@ -20,13 +20,12 @@ public interface StockService {
 	 * @param product
 	 *            Product to reduce the count of
 	 * @param decreaseBy
-	 *            Amount the reduce the count by
-	 * @return Returns false if any error happens like the given amount would
-	 *         result in a negative stock count.
+	 *            Amount the reduce the count by result in a negative stock
+	 *            count.
 	 * @throws IllegalArgumentException
 	 *             if the amount to decrease by is negative
 	 */
-	boolean decreaseItemCount(Product product, int decreaseBy);
+	void decreaseItemCount(Product product, int decreaseBy);
 
 	/**
 	 * Increases the count of Items the given Product has in Stock by a certain
@@ -40,4 +39,6 @@ public interface StockService {
 	 *             if the amount to increase by is negative
 	 */
 	void increaseItemCount(Product product, int increaseBy);
+
+	boolean hasEnoughItems(Product product, int amount);
 }

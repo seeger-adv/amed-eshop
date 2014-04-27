@@ -32,7 +32,7 @@ public class StockProviderImpl
 	}
 
 	@Override
-	public boolean decreaseItemCount(Product product, int decreaseBy) {
+	public void decreaseItemCount(Product product, int decreaseBy) {
 		if (decreaseBy < 0) {
 			throw new IllegalArgumentException();
 		}
@@ -41,12 +41,11 @@ public class StockProviderImpl
 		int newAmount = oldAmount - decreaseBy;
 
 		if (newAmount < 0) {
-			return false;
+			throw new IllegalArgumentException();
 		}
 
 		product.setItemsLeft(newAmount);
 		productDao.updateProduct(product);
-		return true;
 	}
 
 	@Override
@@ -59,5 +58,10 @@ public class StockProviderImpl
 		int newAmount = oldAmount + increaseBy;
 		product.setItemsLeft(newAmount);
 		productDao.updateProduct(product);
+	}
+
+	@Override
+	public boolean hasEnoughItems(Product product, int amount) {
+		return product.getItemsLeft() >= amount;
 	}
 }
