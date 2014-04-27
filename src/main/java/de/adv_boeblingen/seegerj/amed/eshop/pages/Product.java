@@ -9,6 +9,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
+import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.enums.Availability;
 
@@ -18,6 +19,9 @@ public class Product {
 
 	@Component(parameters = { "event=add", "context=product.id" })
 	private EventLink addToBasket;
+
+	@Inject
+	private StockService stockService;
 
 	@Persist
 	private de.adv_boeblingen.seegerj.amed.eshop.model.database.Product product;
@@ -34,7 +38,7 @@ public class Product {
 	}
 
 	public Availability getAvailability() {
-		return Availability.AVAILABLE;
+		return stockService.getAvailability(this.product);
 	}
 
 	void onActivate(long productId) {
