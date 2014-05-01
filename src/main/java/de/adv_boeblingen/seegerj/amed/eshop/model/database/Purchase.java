@@ -32,7 +32,7 @@ public class Purchase {
 	@Id
 	@Column(name = "purchaseid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	@OneToMany
 	@JoinColumn(name = "purchase")
@@ -61,7 +61,7 @@ public class Purchase {
 	@Enumerated(EnumType.ORDINAL)
 	private PaymentState paymentState;
 
-	public int getId() {
+	public long getId() {
 		return this.id;
 	}
 
