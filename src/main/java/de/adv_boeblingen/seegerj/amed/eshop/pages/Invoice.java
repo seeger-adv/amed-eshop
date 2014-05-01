@@ -11,6 +11,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
+@RequiresLogin
 public class Invoice {
 	public StreamResponse onAction() {
 		return new StreamResponse() {
