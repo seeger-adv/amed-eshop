@@ -54,6 +54,10 @@ public class Invoice {
 			PdfWriter.getInstance(document, baos);
 			document.open();
 
+			setMetadata(document);
+			addHeader(document);
+			addPositions(document);
+			addFooter(document);
 
 			return new ByteArrayInputStream(baos.toByteArray());
 		} catch (Exception e) {
@@ -61,5 +65,24 @@ public class Invoice {
 			IOUtils.closeQuietly(baos);
 		}
 		return null;
+	}
+
+	private void addPositions(Document document) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void setMetadata(Document document) {
+		document.addTitle("Invoice #" + purchase.getId());
+		document.addCreator("Coffe Time Invoice Generator v1.337");
+	}
+
+	private void addFooter(Document document) {
+		// document.
+	}
+
+	private void addHeader(Document document) {
+		// TODO Auto-generated method stub
+
 	}
 }
