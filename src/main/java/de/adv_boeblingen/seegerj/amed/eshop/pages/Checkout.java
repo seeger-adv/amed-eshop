@@ -54,6 +54,10 @@ public class Checkout {
 		return allProductInStock;
 	}
 
+	private void clearCart() {
+		shoppingCart.clearAll();
+	}
+
 	private Purchase createPurchase() {
 		boolean existingPurchase = stateManager.exists(Purchase.class);
 		Purchase purchase = stateManager.get(Purchase.class);
@@ -116,6 +120,7 @@ public class Checkout {
 	public Object onSend() {
 		if (checkAvailability() && isValidAddress() && isValidPayment()) {
 			persistPurchase();
+			clearCart();
 			return Receipt.class;
 		}
 
