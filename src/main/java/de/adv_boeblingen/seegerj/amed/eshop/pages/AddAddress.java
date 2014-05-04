@@ -6,7 +6,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.ComponentSource;
 
-import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
+import de.adv_boeblingen.seegerj.amed.eshop.api.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Address;

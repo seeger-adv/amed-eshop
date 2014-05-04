@@ -13,8 +13,8 @@ import org.apache.tapestry5.services.PageRenderLinkSource;
 import org.apache.tapestry5.services.PageRenderRequestParameters;
 import org.apache.tapestry5.services.Response;
 
-import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
+import de.adv_boeblingen.seegerj.amed.eshop.api.RequiresLogin;
 
 public class RequiresLoginFilter implements ComponentRequestFilter {
 

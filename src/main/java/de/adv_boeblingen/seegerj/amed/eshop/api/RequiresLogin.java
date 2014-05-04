@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop.annotations;
+package de.adv_boeblingen.seegerj.amed.eshop.api;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

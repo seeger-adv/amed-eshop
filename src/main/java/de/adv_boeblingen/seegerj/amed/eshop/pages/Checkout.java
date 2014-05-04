@@ -9,8 +9,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
-import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
+import de.adv_boeblingen.seegerj.amed.eshop.api.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
