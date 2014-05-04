@@ -19,6 +19,8 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.PaymentState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.ShippingState;
 
 @RequiresLogin
 public class Checkout {
@@ -64,6 +66,8 @@ public class Checkout {
 	private Purchase createPurchase() {
 		Purchase purchase = stateManager.get(Purchase.class);
 		purchase.setCustomer(customer);
+		purchase.setPaymentState(PaymentState.UNPAID);
+		purchase.setShippingState(ShippingState.RECEIVED);
 
 		Set<Item> items = purchase.getItems();
 		items.clear();
