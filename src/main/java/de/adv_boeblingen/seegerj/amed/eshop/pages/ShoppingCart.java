@@ -9,6 +9,7 @@ import org.apache.tapestry5.corelib.components.EventLink;
 
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
+import de.adv_boeblingen.seegerj.amed.eshop.model.enums.Availability;
 
 public class ShoppingCart {
 	@Property
@@ -23,6 +24,9 @@ public class ShoppingCart {
 
 	@Component(parameters = { "event=sub", "context=item.id" })
 	private EventLink sub;
+
+	@Component(parameters = { "event=checkout" })
+	private EventLink checkout;
 
 	@Property
 	private Product item;
@@ -56,6 +60,16 @@ public class ShoppingCart {
 	public void onDel(String columnId) {
 		Product item = getItem(columnId);
 		shoppingCart.clear(item);
+	}
+
+	public Object onCheckout() {
+		Object redirectTo = Checkout.class;
+		for (Product product : getItems()) {
+			if (product.getItemsLeft() < getAmount(product)) {
+				redirectTo = null;
+			}
+		}
+		return redirectTo;
 	}
 
 	private Product getItem(String columnId) {

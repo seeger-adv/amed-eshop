@@ -25,5 +25,5 @@
             </tbody>
            </table>
 
-           <t:pagelink page="Checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</t:pagelink>
+           <a t:id="checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</a>
 </html>
