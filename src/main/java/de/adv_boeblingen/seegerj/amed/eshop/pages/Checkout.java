@@ -3,10 +3,8 @@ package de.adv_boeblingen.seegerj.amed.eshop.pages;
 import java.util.Map;
 
 import org.apache.tapestry5.Link;
-import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
-import org.apache.tapestry5.corelib.components.EventLink;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.PageRenderLinkSource;
@@ -43,6 +41,41 @@ public class Checkout {
 	@Property
 	private Customer customer;
 
+	private boolean checkAvailability() {
+		boolean allProductInStock = true;
+
+		for (Item item : purchase.getItems()) {
+			allProductInStock &= stockService.hasEnoughItems(item.getProduct(), item.getAmount());
+		}
+		return allProductInStock;
+	}
+
+	private Purchase createPurchase() {
+		boolean existingPurchase = stateManager.exists(Purchase.class);
+		Purchase purchase = stateManager.get(Purchase.class);
+
+		if (!existingPurchase) {
+			Map<Product, Integer> cartItems = shoppingCart.getItems();
+			for (Product product : cartItems.keySet()) {
+				int amount = cartItems.get(product);
+				Item item = new Item();
+				item.setAmount(amount);
+				item.setProduct(product);
+				item.setPurchase(purchase);
+			}
+			purchase.setCustomer(customer);
+		}
+		return purchase;
+	}
+
+	private boolean isValidAddress() {
+		return purchase.getAddress() != null;
+	}
+
+	private boolean isValidPayment() {
+		return purchase.getPaymentInfo() != null;
+	}
+
 	public Object onActivate() {
 		session = stateManager.get(Session.class);
 		customer = session.getCustomer();
@@ -65,47 +98,22 @@ public class Checkout {
 		}
 
 		if (purchase.getAddress() == null) {
-			// return CheckoutAddress.class;
+			return CheckoutAddress.class;
 		}
 
 		return null;
 	}
 
-	private Purchase createPurchase() {
-		boolean existingPurchase = stateManager.exists(Purchase.class);
-		Purchase purchase = stateManager.get(Purchase.class);
-
-		if (!existingPurchase) {
-			Map<Product, Integer> cartItems = shoppingCart.getItems();
-			for (Product product : cartItems.keySet()) {
-				int amount = cartItems.get(product);
-				Item item = new Item();
-				item.setAmount(amount);
-				item.setProduct(product);
-				item.setPurchase(purchase);
-			}
-			purchase.setCustomer(customer);
-		}
-		return purchase;
-	}
-
-	@Component(parameters = { "event=send" })
-	private EventLink send;
-
 	public Object onSend() {
-		boolean allProductInStock = true;
-
-		Map<Product, Integer> cartItems = shoppingCart.getItems();
-		for (Product product : cartItems.keySet()) {
-			int amount = cartItems.get(product);
-			allProductInStock &= stockService.hasEnoughItems(product, amount);
-		}
-
-		if (allProductInStock) {
+		if (checkAvailability() && isValidAddress() && isValidPayment()) {
+			persistPurchase();
 			return Receipt.class;
 		}
 
-		// some items are not available!
 		return null;
+	}
+
+	private void persistPurchase() {
+		// TODO Auto-generated method stub
 	}
 }
