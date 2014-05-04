@@ -27,7 +27,6 @@ public class Checkout {
 	@SessionState
 	private Cart shoppingCart;
 
-	@SessionState
 	private Purchase purchase;
 
 	@Inject
@@ -47,36 +46,46 @@ public class Checkout {
 	public Object onActivate() {
 		session = stateManager.get(Session.class);
 		customer = session.getCustomer();
-
-		if (purchase == null) {
-			purchase = createPurchase();
-		}
-
-		Link link = null;
-		if (customer.getAddress().isEmpty()) {
-			link = this.renderLinkSource.createPageRenderLink(AddAddress.class);
-			link.addParameterValue("next", "Checkout");
-		}
+		purchase = createPurchase();
 
 		if (customer.getPaymentInfo().isEmpty()) {
-			link = this.renderLinkSource.createPageRenderLink(AddPayment.class);
+			Link link = this.renderLinkSource.createPageRenderLink(AddPayment.class);
 			link.addParameterValue("next", "Checkout");
+			return link;
 		}
 
-		return link;
+		if (purchase.getPaymentInfo() == null) {
+			return CheckoutPayment.class;
+		}
+
+		if (customer.getAddress().isEmpty()) {
+			Link link = this.renderLinkSource.createPageRenderLink(AddAddress.class);
+			link.addParameterValue("next", "Checkout");
+			return link;
+		}
+
+		if (purchase.getAddress() == null) {
+			// return CheckoutAddress.class;
+		}
+
+		return null;
 	}
 
 	private Purchase createPurchase() {
-		Purchase purchase = new Purchase();
-		Map<Product, Integer> cartItems = shoppingCart.getItems();
-		for (Product product : cartItems.keySet()) {
-			int amount = cartItems.get(product);
-			Item item = new Item();
-			item.setAmount(amount);
-			item.setProduct(product);
-			item.setPurchase(purchase);
+		boolean existingPurchase = stateManager.exists(Purchase.class);
+		Purchase purchase = stateManager.get(Purchase.class);
+
+		if (!existingPurchase) {
+			Map<Product, Integer> cartItems = shoppingCart.getItems();
+			for (Product product : cartItems.keySet()) {
+				int amount = cartItems.get(product);
+				Item item = new Item();
+				item.setAmount(amount);
+				item.setProduct(product);
+				item.setPurchase(purchase);
+			}
+			purchase.setCustomer(customer);
 		}
-		purchase.setCustomer(customer);
 		return purchase;
 	}
 
