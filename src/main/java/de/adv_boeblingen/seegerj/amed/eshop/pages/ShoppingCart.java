@@ -22,6 +22,8 @@ public class ShoppingCart {
 	@Property
 	private Product item;
 
+	private float sum;
+
 	public int getAmount() {
 		return getAmount(this.item);
 	}
@@ -62,8 +64,14 @@ public class ShoppingCart {
 		return this.shoppingCart.getItems().keySet();
 	}
 
+	public float getSum() {
+		return sum;
+	}
+
 	public float getTotal() {
-		return getAmount() * this.item.getPrice();
+		float total = getAmount() * this.item.getPrice();
+		sum += total;
+		return total;
 	}
 
 	public void onAdd(String columnId) {

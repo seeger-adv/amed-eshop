@@ -23,6 +23,12 @@
                 <td>${total}</td>
               </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"></td>
+                <td><b>${sum}</b></td>
+              </tr>
+            </tfoot>
            </table>
 
            <a t:type="eventlink" t:id="checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</a>
