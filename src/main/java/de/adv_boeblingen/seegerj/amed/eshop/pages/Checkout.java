@@ -41,11 +41,7 @@ public class Checkout {
 
 	public Object onActivate() {
 		session = stateManager.get(Session.class);
-
 		customer = session.getCustomer();
-		if (customer == null) {
-			return Login.class;
-		}
 
 		Link link = null;
 		if (customer.getAddress().isEmpty()) {
