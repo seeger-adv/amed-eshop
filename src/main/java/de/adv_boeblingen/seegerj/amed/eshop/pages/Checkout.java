@@ -152,7 +152,7 @@ public class Checkout {
 
 	private void resetState() {
 		purchaseDao.addPurchase(purchase);
-		purchase = null;
+		stateManager.set(Purchase.class, null);
 		shoppingCart.clearAll();
 	}
 }
