@@ -12,14 +12,16 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import de.adv_boeblingen.seegerj.amed.eshop.api.Identifiable;
+
 @Entity
 @DynamicUpdate
 @DynamicInsert
-public class Address {
+public class Address implements Identifiable {
 	@Id
 	@Column(name = "addressid")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer")
@@ -37,47 +39,48 @@ public class Address {
 	@Column
 	private String city;
 
-	public int getId() {
-		return id;
+	public String getCity() {
+		return city;
 	}
 
 	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	@Override
+	public long getId() {
+		return id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getStreet() {
 		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
 	}
 
 	public int getZip() {
 		return zip;
 	}
 
-	public void setZip(int zip) {
-		this.zip = zip;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public void setZip(int zip) {
+		this.zip = zip;
 	}
 }

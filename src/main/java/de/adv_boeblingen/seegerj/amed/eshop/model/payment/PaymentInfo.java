@@ -9,10 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import de.adv_boeblingen.seegerj.amed.eshop.api.Identifiable;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
 
 @Entity
-public class PaymentInfo {
+public class PaymentInfo implements Identifiable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -38,6 +39,7 @@ public class PaymentInfo {
 		return cvv;
 	}
 
+	@Override
 	public long getId() {
 		return id;
 	}
