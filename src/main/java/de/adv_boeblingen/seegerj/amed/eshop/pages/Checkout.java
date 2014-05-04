@@ -136,12 +136,23 @@ public class Checkout {
 
 	public Object onSend() {
 		if (checkAvailability() && isValidAddress() && isValidPayment()) {
-			purchaseDao.addPurchase(purchase);
-			purchase = null;
-			shoppingCart.clearAll();
+			reduceStock();
+			resetState();
 			return Receipt.class;
 		}
 
 		return null;
+	}
+
+	private void reduceStock() {
+		for (Item item : purchase.getItems()) {
+			stockService.decreaseItemCount(item.getProduct(), item.getAmount());
+		}
+	}
+
+	private void resetState() {
+		purchaseDao.addPurchase(purchase);
+		purchase = null;
+		shoppingCart.clearAll();
 	}
 }
