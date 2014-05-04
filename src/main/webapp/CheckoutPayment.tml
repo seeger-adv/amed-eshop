@@ -2,8 +2,8 @@
     <div class="col-lg-offset-2 col-lg-4">
         <div>Use existing Payment Info</div>
         <div class="list-group">
-            <t:loop source="paymentInfos" value="payment">
-              <t:actionlink t:id="select" context="payment.id" class="list-group-item">${payment}</t:actionlink>
+            <t:loop source="items" value="item">
+              <t:actionlink t:id="select" context="item.id" class="list-group-item">${item}</t:actionlink>
             </t:loop>
         </div>
     </div>
