@@ -10,6 +10,7 @@ import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.PageRenderLinkSource;
 
 import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
+import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
@@ -35,6 +36,9 @@ public class Checkout {
 	private StockService stockService;
 
 	@Inject
+	private PurchaseDao purchaseDao;
+
+	@Inject
 	private ApplicationStateManager stateManager;
 
 	@Inject
@@ -52,10 +56,6 @@ public class Checkout {
 			allProductInStock &= stockService.hasEnoughItems(item.getProduct(), item.getAmount());
 		}
 		return allProductInStock;
-	}
-
-	private void clearCart() {
-		shoppingCart.clearAll();
 	}
 
 	private Purchase createPurchase() {
@@ -119,15 +119,11 @@ public class Checkout {
 
 	public Object onSend() {
 		if (checkAvailability() && isValidAddress() && isValidPayment()) {
-			persistPurchase();
-			clearCart();
+			purchaseDao.addPurchase(purchase);
+			shoppingCart.clearAll();
 			return Receipt.class;
 		}
 
 		return null;
-	}
-
-	private void persistPurchase() {
-		// TODO Auto-generated method stub
 	}
 }
