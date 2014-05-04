@@ -12,8 +12,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.filters.SubcategoryFilter;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Category;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 
-public class FilterFactoryImpl
-		implements FilterFactory {
+public class FilterFactoryImpl implements FilterFactory {
 
 	public static final String RECOMMENDED = "fav";
 	public static final String CATEGORY = "cat";

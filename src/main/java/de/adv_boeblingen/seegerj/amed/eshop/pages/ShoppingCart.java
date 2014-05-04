@@ -2,10 +2,8 @@ package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
 import java.util.Set;
 
-import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
-import org.apache.tapestry5.corelib.components.EventLink;
 
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
@@ -15,18 +13,6 @@ public class ShoppingCart {
 	@Property
 	@SessionState
 	private Cart shoppingCart;
-
-	@Component(parameters = { "event=add", "context=item.id" })
-	private EventLink add;
-
-	@Component(parameters = { "event=del", "context=item.id" })
-	private EventLink del;
-
-	@Component(parameters = { "event=sub", "context=item.id" })
-	private EventLink sub;
-
-	@Component(parameters = { "event=checkout" })
-	private EventLink checkout;
 
 	@Property
 	private Product item;

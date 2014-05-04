@@ -17,8 +17,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider.DatabaseRunnable;
 
-public class AuthenticatorServiceImpl
-		implements AuthenticatorService {
+public class AuthenticatorServiceImpl implements AuthenticatorService {
 
 	@SessionState
 	private Session session;

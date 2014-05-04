@@ -16,8 +16,7 @@ import org.apache.tapestry5.services.Response;
 import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
 
-public class RequiresLoginFilter
-		implements ComponentRequestFilter {
+public class RequiresLoginFilter implements ComponentRequestFilter {
 
 	@Inject
 	private AuthenticatorService authService;

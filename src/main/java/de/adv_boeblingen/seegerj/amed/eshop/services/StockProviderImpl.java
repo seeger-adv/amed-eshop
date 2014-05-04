@@ -7,8 +7,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 import de.adv_boeblingen.seegerj.amed.eshop.model.enums.Availability;
 
-public class StockProviderImpl
-		implements StockService {
+public class StockProviderImpl implements StockService {
 
 	@Inject
 	ProductDao productDao;

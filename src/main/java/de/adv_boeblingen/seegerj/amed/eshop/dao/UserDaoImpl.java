@@ -13,8 +13,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider;
 import de.adv_boeblingen.seegerj.amed.eshop.provider.DatabaseProvider.DatabaseRunnable;
 
-public class UserDaoImpl
-		implements UserDao {
+public class UserDaoImpl implements UserDao {
 
 	@InjectService("sha512")
 	private CryptService cryptService;
