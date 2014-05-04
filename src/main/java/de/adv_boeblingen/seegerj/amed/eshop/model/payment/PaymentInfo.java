@@ -30,40 +30,44 @@ public class PaymentInfo {
 	@Column
 	private String cvv;
 
-	public String getOwner() {
-		return owner;
-	}
-
-	public void setOwner(String owner) {
-		this.owner = owner;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
+	public Customer getCustomer() {
+		return customer;
 	}
 
 	public String getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(String cvv) {
-		this.cvv = cvv;
+	public long getId() {
+		return id;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("%s%n%s%n", owner, number);
+	public String getNumber() {
+		return number;
+	}
+
+	public String getOwner() {
+		return owner;
 	}
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public void setCvv(String cvv) {
+		this.cvv = cvv;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("%s%n%s%n", owner, number);
 	}
 }

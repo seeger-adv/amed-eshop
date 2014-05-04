@@ -27,14 +27,17 @@ public class CheckoutAddress {
 		return session.getCustomer().getAddress();
 	}
 
+	public Object onActionFromSelect(long addressId) {
+		for (Address a : getAddresses()) {
+			if (a.getId() == addressId) {
+				purchase.setAddress(a);
+			}
+		}
+		return Checkout.class;
+	}
+
 	public void onActivate() {
 		session = stateManager.get(Session.class);
 		purchase = stateManager.get(Purchase.class);
-	}
-
-	public Object onSelect(Address address) {
-		System.out.println(address);
-		purchase.setAddress(address);
-		return Checkout.class;
 	}
 }

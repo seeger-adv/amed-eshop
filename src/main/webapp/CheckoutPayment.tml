@@ -1,5 +1,15 @@
-<html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-<div class="container">
-  
-</div>
+<html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">   
+    <div class="col-lg-offset-2 col-lg-4">
+        <div>Use existing Payment Info</div>
+        <div class="list-group">
+            <t:loop source="paymentInfos" value="payment">
+              <t:actionlink t:id="select" context="payment.id" class="list-group-item">${payment}</t:actionlink>
+            </t:loop>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <t:pagelink page="AddPayment">
+            Add new Payment Info
+        </t:pagelink>
+    </div>
 </html>
