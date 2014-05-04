@@ -16,7 +16,9 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
 
 @RequiresLogin
 public class Checkout {
@@ -24,6 +26,9 @@ public class Checkout {
 	@Property
 	@SessionState
 	private Cart shoppingCart;
+
+	@SessionState
+	private Purchase purchase;
 
 	@Inject
 	private StockService stockService;
@@ -43,6 +48,10 @@ public class Checkout {
 		session = stateManager.get(Session.class);
 		customer = session.getCustomer();
 
+		if (purchase == null) {
+			purchase = createPurchase();
+		}
+
 		Link link = null;
 		if (customer.getAddress().isEmpty()) {
 			link = this.renderLinkSource.createPageRenderLink(AddAddress.class);
@@ -55,6 +64,20 @@ public class Checkout {
 		}
 
 		return link;
+	}
+
+	private Purchase createPurchase() {
+		Purchase purchase = new Purchase();
+		Map<Product, Integer> cartItems = shoppingCart.getItems();
+		for (Product product : cartItems.keySet()) {
+			int amount = cartItems.get(product);
+			Item item = new Item();
+			item.setAmount(amount);
+			item.setProduct(product);
+			item.setPurchase(purchase);
+		}
+		purchase.setCustomer(customer);
+		return purchase;
 	}
 
 	@Component(parameters = { "event=send" })
