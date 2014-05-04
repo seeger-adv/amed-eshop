@@ -11,6 +11,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Address;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
 
 @RequiresLogin
 public class AddAddress {
@@ -54,6 +55,10 @@ public class AddAddress {
 		address.setCustomer(customer);
 		customer.getAddress().add(address);
 		userDao.updateUser(customer);
+
+		if (stateManager.exists(Purchase.class)) {
+			stateManager.get(Purchase.class).setAddress(address);
+		}
 	}
 
 	public Object onSuccess() {
