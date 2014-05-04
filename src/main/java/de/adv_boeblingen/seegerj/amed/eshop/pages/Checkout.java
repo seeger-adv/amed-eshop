@@ -29,6 +29,8 @@ public class Checkout {
 	@Property
 	private Purchase purchase;
 
+	private float sum;
+
 	@Property
 	private Item item;
 
@@ -77,8 +79,22 @@ public class Checkout {
 		return purchase;
 	}
 
+	public float getSum() {
+		return sum;
+	}
+
+	public double getTax() {
+		return getSum() - getWoTax();
+	}
+
 	public double getTotal() {
-		return item.getAmount() * item.getProduct().getPrice();
+		float total = item.getAmount() * item.getProduct().getPrice();
+		sum += total;
+		return total;
+	}
+
+	public double getWoTax() {
+		return getSum() / 1.16;
 	}
 
 	private boolean isValidAddress() {
