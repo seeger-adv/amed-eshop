@@ -1,4 +1,6 @@
 INSERT INTO customer (mail, password, created, lastlogin) VALUES ('admin@local.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 0, 0);
+INSERT INTO Address (name, street, zip, city, customer) VALUES ('Jan Seeger', 'Orionweg 9b', 70565, 'Stuttgart', 'admin@local.com');
+INSERT INTO PaymentInfo (cvv, number, owner, customer) VALUES ('123', '123456789', 'Jan Seeger', 'admin@local.com');
 
 INSERT INTO category (categoryid, slug) VALUES (1, 'Coffee');
 INSERT INTO category (categoryid, slug) VALUES (2, 'Coffee Makers');
