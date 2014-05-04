@@ -9,22 +9,16 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.FilterFactory;
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
+import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.CategoryDaoImpl;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.ProductDaoImpl;
+import de.adv_boeblingen.seegerj.amed.eshop.dao.PurchaseDaoImpl;
 import de.adv_boeblingen.seegerj.amed.eshop.dao.UserDaoImpl;
 import de.adv_boeblingen.seegerj.amed.eshop.filters.RequiresLoginFilter;
 
 public class AppModule {
-	public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration) {
-		configuration.add("tapestry.hmac-passphrase", "machete schreibt keine sms!");
-	}
-
-	public static void contributeComponentRequestHandler(OrderedConfiguration<Object> configuration) {
-		configuration.addInstance("RequiresLogin", RequiresLoginFilter.class);
-	}
-
 	public static void bind(ServiceBinder binder) {
 		binder.bind(AuthenticatorService.class, AuthenticatorServiceImpl.class);
 		binder.bind(CryptService.class, SHA512Service.class);
@@ -35,5 +29,14 @@ public class AppModule {
 		binder.bind(CategoryDao.class, CategoryDaoImpl.class);
 		binder.bind(FilterFactory.class, FilterFactoryImpl.class);
 		binder.bind(StockService.class, StockProviderImpl.class);
+		binder.bind(PurchaseDao.class, PurchaseDaoImpl.class);
+	}
+
+	public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration) {
+		configuration.add("tapestry.hmac-passphrase", "machete schreibt keine sms!");
+	}
+
+	public static void contributeComponentRequestHandler(OrderedConfiguration<Object> configuration) {
+		configuration.addInstance("RequiresLogin", RequiresLoginFilter.class);
 	}
 }
