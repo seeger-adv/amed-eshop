@@ -72,9 +72,14 @@ public class ShoppingCart {
 	}
 
 	public Object onCheckout() {
+		if (getItems().isEmpty()) {
+			return null;
+		}
+
 		Object redirectTo = Checkout.class;
 		for (Product product : getItems()) {
-			if (product.getItemsLeft() < getAmount(product)) {
+			int amount = getAmount(product);
+			if (!stockService.hasEnoughItems(product, amount)) {
 				redirectTo = null;
 			}
 		}
