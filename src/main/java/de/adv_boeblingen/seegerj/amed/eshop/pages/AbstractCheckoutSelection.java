@@ -19,7 +19,7 @@ public abstract class AbstractCheckoutSelection<T extends Identifiable> {
 	protected Purchase purchase;
 
 	@Property
-	private T address;
+	private T item;
 
 	protected abstract void add(T a);
 
