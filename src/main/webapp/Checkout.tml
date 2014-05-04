@@ -1,5 +1,24 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-<h1>Summary</h1>
-Hier k&ouml;nnte Ihre Werbung stehen!
-<a t:type="eventlink" t:id="send" class="btn">Accept</a>
+    <h1>Summary</h1>
+
+    <table class="table col-lg-8">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr t:type="loop" source="purchase.items" value="item">
+                <td>${item.product.slug}</td>
+                <td>${item.amount}</td>
+                <td>${item.product.price}</td>
+                <td>${total}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a t:type="eventlink" t:id="send" class="btn">Accept</a>
 </html>

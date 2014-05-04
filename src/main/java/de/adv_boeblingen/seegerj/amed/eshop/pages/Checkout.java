@@ -25,7 +25,11 @@ public class Checkout {
 	@SessionState
 	private Cart shoppingCart;
 
+	@Property
 	private Purchase purchase;
+
+	@Property
+	private Item item;
 
 	@Inject
 	private StockService stockService;
@@ -62,10 +66,15 @@ public class Checkout {
 				item.setAmount(amount);
 				item.setProduct(product);
 				item.setPurchase(purchase);
+				purchase.getItems().add(item);
 			}
 			purchase.setCustomer(customer);
 		}
 		return purchase;
+	}
+
+	public double getTotal() {
+		return item.getAmount() * item.getProduct().getPrice();
 	}
 
 	private boolean isValidAddress() {
