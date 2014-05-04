@@ -1,6 +1,7 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.tapestry5.Link;
 import org.apache.tapestry5.annotations.Property;
@@ -61,20 +62,20 @@ public class Checkout {
 	}
 
 	private Purchase createPurchase() {
-		boolean existingPurchase = stateManager.exists(Purchase.class);
 		Purchase purchase = stateManager.get(Purchase.class);
+		purchase.setCustomer(customer);
 
-		if (!existingPurchase) {
-			Map<Product, Integer> cartItems = shoppingCart.getItems();
-			for (Product product : cartItems.keySet()) {
-				int amount = cartItems.get(product);
-				Item item = new Item();
-				item.setAmount(amount);
-				item.setProduct(product);
-				item.setPurchase(purchase);
-				purchase.getItems().add(item);
-			}
-			purchase.setCustomer(customer);
+		Set<Item> items = purchase.getItems();
+		items.clear();
+
+		Map<Product, Integer> cartItems = shoppingCart.getItems();
+		for (Product product : cartItems.keySet()) {
+			int amount = cartItems.get(product);
+			Item item = new Item();
+			item.setAmount(amount);
+			item.setProduct(product);
+			item.setPurchase(purchase);
+			items.add(item);
 		}
 		return purchase;
 	}
@@ -136,6 +137,7 @@ public class Checkout {
 	public Object onSend() {
 		if (checkAvailability() && isValidAddress() && isValidPayment()) {
 			purchaseDao.addPurchase(purchase);
+			purchase = null;
 			shoppingCart.clearAll();
 			return Receipt.class;
 		}
