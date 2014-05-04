@@ -53,6 +53,7 @@ public class AddPayment {
 	private void addPaymentToUser(PaymentInfo payment) {
 		Session session = stateManager.get(Session.class);
 		Customer customer = session.getCustomer();
+		payment.setCustomer(customer);
 		customer.getPaymentInfo().add(payment);
 		userDao.updateUser(customer);
 	}
