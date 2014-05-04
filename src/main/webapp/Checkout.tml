@@ -1,5 +1,5 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
 <h1>Summary</h1>
 Hier k&ouml;nnte Ihre Werbung stehen!
-<a t:id="send" class="btn">Accept</a>
+<a t:type="eventlink" t:id="send" class="btn">Accept</a>
 </html>
