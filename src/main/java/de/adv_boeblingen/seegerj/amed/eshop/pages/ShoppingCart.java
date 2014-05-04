@@ -72,6 +72,22 @@ public class ShoppingCart {
 		return redirectTo;
 	}
 
+	public Availability getAvailability() {
+		if (item.getItemsLeft() <= getAmount()) {
+			return Availability.OUT_OF_STOCK;
+		}
+		return null;
+	}
+
+	public String getAvailabilityBadge() {
+		Availability availability = getAvailability();
+		if (availability != null) {
+			return availability.getBadge();
+		}
+
+		return "";
+	}
+
 	private Product getItem(String columnId) {
 		int itemId = Integer.parseInt(columnId);
 		for (Product item : getItems()) {
