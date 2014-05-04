@@ -36,7 +36,11 @@ public class ShoppingCart {
 	}
 
 	public int getAmount() {
-		return this.shoppingCart.getItems().get(this.item);
+		return getAmount(this.item);
+	}
+
+	private int getAmount(Product product) {
+		return this.shoppingCart.getItems().get(product);
 	}
 
 	public void onAdd(String columnId) {
