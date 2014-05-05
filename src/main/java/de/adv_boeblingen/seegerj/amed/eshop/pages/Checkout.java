@@ -142,7 +142,7 @@ public class Checkout {
 		if (checkAvailability() && isValidAddress() && isValidPayment()) {
 			reduceStock();
 			resetState();
-			return Invoice.class;
+			return this.renderLinkSource.createPageRenderLinkWithContext(Invoice.class, this.purchase.getId());
 		}
 
 		return null;
