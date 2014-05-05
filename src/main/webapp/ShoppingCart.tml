@@ -10,20 +10,26 @@
             </thead>
             <tbody>
               <tr t:type="loop" source="items" value="item">
-                <td>${item.slug}</td>
+                <td>${item.slug}<br /><span class="label label-${availabilityBadge}">${availability}</span></td>
                 <td>
                   ${amount}
                   <div class="btn-group btn-group-xs">
-                      <a t:id="add" class="btn"><span class="glyphicon glyphicon-plus"></span></a>
-                      <a t:id="sub" class="btn"><span class="glyphicon glyphicon-minus"></span></a>
-                      <a t:id="del" class="btn"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a t:type="eventlink" t:id="add" t:context="item.id" class="btn"><span class="glyphicon glyphicon-plus"></span></a>
+                      <a t:type="eventlink" t:id="sub" t:context="item.id" class="btn"><span class="glyphicon glyphicon-minus"></span></a>
+                      <a t:type="eventlink" t:id="del" t:context="item.id" class="btn"><span class="glyphicon glyphicon-trash"></span></a>
                   </div>
                 </td>
                 <td>${item.price}</td>
                 <td>${total}</td>
               </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"></td>
+                <td><b>${sum}</b></td>
+              </tr>
+            </tfoot>
            </table>
 
-           <t:pagelink page="Checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</t:pagelink>
+           <a t:type="eventlink" t:id="checkout" class="btn btn-lg btn-primary btn-block">Proceed to Checkout</a>
 </html>

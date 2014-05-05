@@ -8,10 +8,11 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.ApplicationStateManager;
 import org.apache.tapestry5.services.ComponentSource;
 
-import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
+import de.adv_boeblingen.seegerj.amed.eshop.api.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.UserDao;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Session;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Customer;
+import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
 import de.adv_boeblingen.seegerj.amed.eshop.model.payment.PaymentInfo;
 
 @RequiresLogin
@@ -56,6 +57,10 @@ public class AddPayment {
 		payment.setCustomer(customer);
 		customer.getPaymentInfo().add(payment);
 		userDao.updateUser(customer);
+
+		if (stateManager.exists(Purchase.class)) {
+			stateManager.get(Purchase.class).setPaymentInfo(payment);
+		}
 	}
 
 	public Object onSuccess() {

@@ -1,4 +1,76 @@
 <html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
-Hier k&ouml;nnte Ihre Werbung stehen!
-<a t:id="send" class="btn">Accept</a>
+    <h1>Summary</h1>
+
+    <div class="col-lg-8">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr t:type="loop" source="purchase.items" value="item">
+                <td>${item.product.slug}</td>
+                <td>${item.amount}</td>
+                <td>${item.product.price}</td>
+                <td>${total}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td class="summary">w/o Tax</td>
+                <td>${woTax}</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border:none"></td>
+                <td class="summary">Sales Tax</td>
+                <td>${tax}</td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td class="summary">Total</td>
+                <td>${sum}</td>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Shipping to:</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <p class="list-group-item-text">${purchase.address.name}</p>
+                    <p class="list-group-item-text">${purchase.address.street}</p>
+                    <p class="list-group-item-text">${purchase.address.zip}&nbsp;${purchase.address.city}</p>
+                </li>
+            </ul>
+            <div class="panel-footer">
+                <a role="button" class="btn" href="/eshop/checkoutaddress">Edit Address &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Payment options:</h3>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">${purchase.paymentInfo}</li>
+            </ul>
+            <div class="panel-footer">
+                <a role="button" class="btn" href="/eshop/checkoutpayment">Edit Payment details &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <a t:type="eventlink" t:id="send" class="btn btn-lg btn-primary btn-block">Checkout</a>
 </html>

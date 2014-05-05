@@ -8,8 +8,7 @@ import org.apache.tapestry5.ioc.annotations.ServiceId;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 
 @ServiceId("md5")
-public class MD5Service
-		implements CryptService {
+public class MD5Service implements CryptService {
 
 	@Override
 	public String crypt(String input) {

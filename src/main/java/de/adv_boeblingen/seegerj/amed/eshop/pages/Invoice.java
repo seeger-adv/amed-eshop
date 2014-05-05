@@ -14,8 +14,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import de.adv_boeblingen.seegerj.amed.eshop.annotations.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
+import de.adv_boeblingen.seegerj.amed.eshop.api.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
 
 @RequiresLogin
@@ -27,7 +27,7 @@ public class Invoice {
 	private Purchase purchase;
 
 	public StreamResponse onAction(int purchaseId) {
-		purchase = purchaseDao.getPurchase(purchaseId);
+		this.purchase = this.purchaseDao.getPurchase(purchaseId);
 
 		return new StreamResponse() {
 			@Override
@@ -73,7 +73,7 @@ public class Invoice {
 	}
 
 	private void setMetadata(Document document) {
-		document.addTitle("Invoice #" + purchase.getId());
+		document.addTitle("Invoice #" + this.purchase.getId());
 		document.addCreator("Coffe Time Invoice Generator v1.337");
 	}
 

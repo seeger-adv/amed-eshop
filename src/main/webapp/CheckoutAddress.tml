@@ -1,0 +1,19 @@
+<html t:type="Layout" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+    <div class="col-lg-offset-2 col-lg-4">
+        <div>Use existing Address</div>
+        <div class="list-group">
+            <t:loop source="items" value="item">
+                    <t:actionlink t:id="select" context="item.id" class="list-group-item">
+                    <p class="list-group-item-text">${item.name}</p>
+                    <p class="list-group-item-text">${item.street}</p>
+                    <p class="list-group-item-text">${item.zip}&nbsp;${item.city}</p>
+                </t:actionlink>
+            </t:loop>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <t:pagelink page="AddAddress">
+            Add new Address
+        </t:pagelink>
+    </div>
+</html>

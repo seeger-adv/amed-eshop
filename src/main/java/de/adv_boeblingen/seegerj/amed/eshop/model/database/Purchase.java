@@ -24,6 +24,7 @@ import org.hibernate.annotations.DynamicInsert;
 
 import de.adv_boeblingen.seegerj.amed.eshop.model.enums.PaymentState;
 import de.adv_boeblingen.seegerj.amed.eshop.model.enums.ShippingState;
+import de.adv_boeblingen.seegerj.amed.eshop.model.payment.PaymentInfo;
 
 @Entity
 @DynamicInsert
@@ -41,6 +42,14 @@ public class Purchase {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer")
 	private Customer customer;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "address")
+	private Address address;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "paymentInfo")
+	private PaymentInfo paymentInfo;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -87,5 +96,29 @@ public class Purchase {
 
 	public void setShippingState(ShippingState shippingState) {
 		this.shippingState = shippingState;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public PaymentInfo getPaymentInfo() {
+		return paymentInfo;
+	}
+
+	public void setPaymentInfo(PaymentInfo paymentInfo) {
+		this.paymentInfo = paymentInfo;
+	}
+
+	public PaymentState getPaymentState() {
+		return paymentState;
+	}
+
+	public void setPaymentState(PaymentState paymentState) {
+		this.paymentState = paymentState;
 	}
 }

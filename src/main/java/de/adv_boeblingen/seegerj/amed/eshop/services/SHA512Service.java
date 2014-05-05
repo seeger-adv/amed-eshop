@@ -8,8 +8,7 @@ import org.apache.tapestry5.ioc.annotations.ServiceId;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 
 @ServiceId("sha512")
-public class SHA512Service
-		implements CryptService {
+public class SHA512Service implements CryptService {
 
 	@Override
 	public String crypt(String input) {
