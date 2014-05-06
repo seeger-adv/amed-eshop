@@ -68,7 +68,7 @@ public class Invoice {
 			return new ByteArrayInputStream(baos.toByteArray());
 		} catch (Exception e) {
 		} finally {
-			IOUtils.closeQuietly(baos);
+			IOUtils.closeQuietly(document);
 		}
 		return null;
 	}
