@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.tapestry5.StreamResponse;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Response;
@@ -58,18 +57,26 @@ public class Invoice {
 			document.addCreator("Coffe Time Invoice Generator v1.337");
 			document.open();
 
-			try {
-				document.add(new Paragraph("asdf"));
-			} catch (DocumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			assembleInvoice(document);
 
-			return new ByteArrayInputStream(baos.toByteArray());
+			document.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
-			IOUtils.closeQuietly(document);
+			try {
+				baos.flush();
+			} catch (IOException e) {
+			}
 		}
-		return null;
+		return new ByteArrayInputStream(baos.toByteArray());
+	}
+
+	private void assembleInvoice(Document document) {
+		try {
+			document.add(new Paragraph("asdf"));
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
