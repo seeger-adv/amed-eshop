@@ -11,7 +11,9 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Response;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
@@ -26,7 +28,7 @@ public class Invoice {
 
 	private Purchase purchase;
 
-	public StreamResponse onAction(int purchaseId) {
+	public StreamResponse onActivate(int purchaseId) {
 		this.purchase = this.purchaseDao.getPurchase(purchaseId);
 
 		return new StreamResponse() {
@@ -52,12 +54,16 @@ public class Invoice {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try {
 			PdfWriter.getInstance(document, baos);
+			document.addTitle("Invoice #" + this.purchase.getId());
+			document.addCreator("Coffe Time Invoice Generator v1.337");
 			document.open();
 
-			setMetadata(document);
-			addHeader(document);
-			addPositions(document);
-			addFooter(document);
+			try {
+				document.add(new Paragraph("asdf"));
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			return new ByteArrayInputStream(baos.toByteArray());
 		} catch (Exception e) {
@@ -65,24 +71,5 @@ public class Invoice {
 			IOUtils.closeQuietly(baos);
 		}
 		return null;
-	}
-
-	private void addPositions(Document document) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void setMetadata(Document document) {
-		document.addTitle("Invoice #" + this.purchase.getId());
-		document.addCreator("Coffe Time Invoice Generator v1.337");
-	}
-
-	private void addFooter(Document document) {
-		// document.
-	}
-
-	private void addHeader(Document document) {
-		// TODO Auto-generated method stub
-
 	}
 }
