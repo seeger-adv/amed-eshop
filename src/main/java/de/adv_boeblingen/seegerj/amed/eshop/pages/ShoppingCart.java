@@ -1,5 +1,6 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
+import java.text.DecimalFormat;
 import java.util.Set;
 
 import org.apache.tapestry5.annotations.Property;
