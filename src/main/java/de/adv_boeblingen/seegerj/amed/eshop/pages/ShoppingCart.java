@@ -60,6 +60,10 @@ public class ShoppingCart {
 		return null;
 	}
 
+	public DecimalFormat getNumberFormat() {
+		return new DecimalFormat("0.00");
+	}
+
 	public Set<Product> getItems() {
 		return this.shoppingCart.getItems().keySet();
 	}
