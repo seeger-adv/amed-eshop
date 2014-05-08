@@ -22,18 +22,18 @@
         <tfoot>
             <tr>
                 <td colspan="2"></td>
-                <td class="summary">w/o Tax</td>
-                <td>${woTax}</td>
+                <td class="summary">Sub Total</td>
+                <td><t:output format="numberFormat" value="subtotal"/></td>
             </tr>
             <tr>
                 <td colspan="2" style="border:none"></td>
                 <td class="summary">Sales Tax</td>
-                <td>${tax}</td>
+                <td><t:output format="numberFormat" value="tax"/></td>
             </tr>
             <tr>
                 <td colspan="2"></td>
                 <td class="summary">Total</td>
-                <td>${sum}</td>
+                <td><t:output format="numberFormat" value="sum"/></td>
             </tr>
         </tfoot>
     </table>

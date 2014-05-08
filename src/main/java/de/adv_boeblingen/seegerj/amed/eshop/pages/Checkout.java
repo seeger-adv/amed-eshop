@@ -1,5 +1,6 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.Set;
 
@@ -54,6 +55,10 @@ public class Checkout {
 	@Property
 	private Customer customer;
 
+	public DecimalFormat getNumberFormat() {
+		return new DecimalFormat("0.00");
+	}
+
 	private boolean checkAvailability() {
 		boolean allProductInStock = true;
 
@@ -89,7 +94,7 @@ public class Checkout {
 	}
 
 	public double getTax() {
-		return getSum() - getWoTax();
+		return getSum() - getSubtotal();
 	}
 
 	public double getTotal() {
@@ -98,7 +103,7 @@ public class Checkout {
 		return total;
 	}
 
-	public double getWoTax() {
+	public double getSubtotal() {
 		return getSum() / 1.16;
 	}
 
