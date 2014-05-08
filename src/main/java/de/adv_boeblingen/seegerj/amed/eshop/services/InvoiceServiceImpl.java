@@ -90,11 +90,11 @@ public class InvoiceServiceImpl implements InvoiceService {
 			for (Item i : purchase.getItems()) {
 				Product product = i.getProduct();
 				table.addCell(product.getSlug());
-				table.addCell(product.getPrice() + " €");
+				table.addCell(String.format("%.2f €", product.getPrice()));
 				table.addCell(Integer.toString(i.getAmount()));
 				float sum = i.getAmount() * product.getPrice();
 				total += sum;
-				table.addCell(sum + " €");
+				table.addCell(String.format("%.2f €", sum));
 			}
 
 			float tax = total / 1.16f;
@@ -105,15 +105,15 @@ public class InvoiceServiceImpl implements InvoiceService {
 			cell.setBorder(PdfPCell.RIGHT);
 			table.addCell(cell);
 			table.addCell("Sub Total");
-			table.addCell(sum + " €");
+			table.addCell(String.format("%.2f €", sum));
 
 			table.addCell(cell);
 			table.addCell("Sales Tax");
-			table.addCell(tax + " €");
+			table.addCell(String.format("%.2f €", tax));
 
 			table.addCell(cell);
 			table.addCell("Total");
-			table.addCell(total + " €");
+			table.addCell(String.format("%.2f €", total));
 
 			document.add(table);
 		} catch (DocumentException e) {
