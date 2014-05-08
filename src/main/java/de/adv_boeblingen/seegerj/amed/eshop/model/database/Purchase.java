@@ -34,20 +34,20 @@ public class Purchase {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "purchase")
 	@OrderBy(value = "id")
 	private final Set<Item> items = new HashSet<Item>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer")
 	private Customer customer;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "address")
 	private Address address;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "paymentInfo")
 	private PaymentInfo paymentInfo;
 
@@ -99,7 +99,7 @@ public class Purchase {
 	}
 
 	public Address getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(Address address) {
@@ -107,7 +107,7 @@ public class Purchase {
 	}
 
 	public PaymentInfo getPaymentInfo() {
-		return paymentInfo;
+		return this.paymentInfo;
 	}
 
 	public void setPaymentInfo(PaymentInfo paymentInfo) {
@@ -115,7 +115,7 @@ public class Purchase {
 	}
 
 	public PaymentState getPaymentState() {
-		return paymentState;
+		return this.paymentState;
 	}
 
 	public void setPaymentState(PaymentState paymentState) {
