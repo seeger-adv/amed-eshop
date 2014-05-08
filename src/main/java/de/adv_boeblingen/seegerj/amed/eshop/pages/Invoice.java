@@ -7,10 +7,10 @@ import org.apache.tapestry5.StreamResponse;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Response;
 
+import de.adv_boeblingen.seegerj.amed.eshop.api.InvoiceService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.RequiresLogin;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
-import de.adv_boeblingen.seegerj.amed.eshop.services.InvoiceService;
 
 @RequiresLogin
 public class Invoice {

@@ -8,6 +8,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.AuthenticatorService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CategoryDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.CryptService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.FilterFactory;
+import de.adv_boeblingen.seegerj.amed.eshop.api.InvoiceService;
 import de.adv_boeblingen.seegerj.amed.eshop.api.ProductDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.PurchaseDao;
 import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
@@ -30,6 +31,7 @@ public class AppModule {
 		binder.bind(FilterFactory.class, FilterFactoryImpl.class);
 		binder.bind(StockService.class, StockProviderImpl.class);
 		binder.bind(PurchaseDao.class, PurchaseDaoImpl.class);
+		binder.bind(InvoiceService.class, InvoiceServiceImpl.class);
 	}
 
 	public static void contributeApplicationDefaults(MappedConfiguration<String, String> configuration) {

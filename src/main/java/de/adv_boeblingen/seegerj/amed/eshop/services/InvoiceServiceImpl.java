@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -24,16 +25,18 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import de.adv_boeblingen.seegerj.amed.eshop.api.InvoiceService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Address;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Item;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Product;
 import de.adv_boeblingen.seegerj.amed.eshop.model.database.Purchase;
 
-public class InvoiceService {
+public class InvoiceServiceImpl implements InvoiceService {
 	@Inject
 	@Path("context:img/icon.jpg")
 	private Asset logo;
 
+	@Override
 	public InputStream createInvoice(Purchase purchase) {
 		Document document = new Document(PageSize.A4, 50, 50, 100, 50);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -85,7 +88,6 @@ public class InvoiceService {
 
 			float total = 0;
 			for (Item i : purchase.getItems()) {
-				table.addCell("");
 				Product product = i.getProduct();
 				table.addCell(product.getSlug());
 				table.addCell(product.getPrice() + " €");
@@ -131,7 +133,8 @@ public class InvoiceService {
 		@Override
 		public void onStartPage(PdfWriter writer, Document document) {
 			try {
-				Image img = Image.getInstance(InvoiceService.this.logo.getResource().getFile());
+				InputStream stream = InvoiceServiceImpl.this.logo.getResource().openStream();
+				Image img = Image.getInstance(IOUtils.toByteArray(stream));
 				img.setAbsolutePosition(document.left(), document.top());
 				document.add(img);
 				document.add(new Paragraph("Coffee Time"));
