@@ -15,25 +15,25 @@
             <tr t:type="loop" source="purchase.items" value="item">
                 <td>${item.product.slug}</td>
                 <td>${item.amount}</td>
-                <td>${item.product.price}</td>
-                <td>${total}</td>
+                <td><t:output format="numberFormat" value="item.product.price"/> &euro;</td>
+                <td><t:output format="numberFormat" value="total"/> &euro;</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="2"></td>
-                <td class="summary">Sub Total</td>
-                <td><t:output format="numberFormat" value="subtotal"/></td>
+                <td class="summary"><b>Sub Total</b></td>
+                <td><b><t:output format="numberFormat" value="subtotal"/> &euro;</b></td>
             </tr>
             <tr>
                 <td colspan="2" style="border:none"></td>
-                <td class="summary">Sales Tax</td>
-                <td><t:output format="numberFormat" value="tax"/></td>
+                <td class="summary"><b>Sales Tax</b></td>
+                <td><b><t:output format="numberFormat" value="tax"/> &euro;</b></td>
             </tr>
             <tr>
                 <td colspan="2"></td>
-                <td class="summary">Total</td>
-                <td><t:output format="numberFormat" value="sum"/></td>
+                <td class="summary"><b>Total</b></td>
+                <td><b><t:output format="numberFormat" value="sum"/> &euro;</b></td>
             </tr>
         </tfoot>
     </table>
