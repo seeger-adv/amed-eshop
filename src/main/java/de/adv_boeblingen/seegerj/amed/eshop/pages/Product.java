@@ -1,6 +1,7 @@
 package de.adv_boeblingen.seegerj.amed.eshop.pages;
 
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
@@ -13,6 +14,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.enums.Availability;
 
+@Import(stack = { "JqueryZoom" })
 public class Product {
 	@Inject
 	private ProductDao catalog;
@@ -38,7 +40,7 @@ public class Product {
 	}
 
 	public Availability getAvailability() {
-		return stockService.getAvailability(this.product);
+		return this.stockService.getAvailability(this.product);
 	}
 
 	void onActivate(long productId) {
@@ -46,7 +48,7 @@ public class Product {
 	}
 
 	Object onAdd(String productId) {
-		this.shoppingCart.add(product);
+		this.shoppingCart.add(this.product);
 		return this.linkSource.createPageRenderLinkWithContext(Product.class, productId);
 	}
 }
