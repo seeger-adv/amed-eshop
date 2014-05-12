@@ -8,6 +8,8 @@
             <th>#</th>
             <th>Order Date</th>
             <th>Shipping Status</th>
+            <th>Payment Status</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -15,6 +17,8 @@
             <td>${purchase.id}</td>
             <td>${purchase.date}</td>
             <td>${purchase.shippingState}</td>
+            <td>${purchase.paymentState}</td>
+            <td><t:pagelink page="Invoice" role="button" href="#" t:context="purchase.id"><span class="glyphicon glyphicon-download"></span>&nbsp;Invoice</t:pagelink></td>
           </tr>
         </tbody>
       </table>
