@@ -1,4 +1,4 @@
-package de.adv_boeblingen.seegerj.amed.eshop;
+package de.adv_boeblingen.seegerj.amed.eshop.services;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -14,7 +14,7 @@ import de.adv_boeblingen.seegerj.amed.eshop.api.StockService;
 import de.adv_boeblingen.seegerj.amed.eshop.model.Cart;
 import de.adv_boeblingen.seegerj.amed.eshop.model.enums.Availability;
 
-@Import(stack = { "JqueryZoom" })
+@Import(stack = "JqueryZoom")
 public class Product {
 	@Inject
 	private ProductDao catalog;
