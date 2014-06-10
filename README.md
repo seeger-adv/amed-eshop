@@ -2,7 +2,7 @@
 
 This repo contains a Java based web shop I had to develop as part of the media development course (AMED) at ADV Böblingen.
 
-I have put too much effort into this to just delete the whole thing, so here i m publishing the whole thing as-is.
+I have put too much effort into this to just delete the whole thing, so here I am publishing the whole thing as-is.
 
 ### License ###
 This code is being published under the [WTFPL](http://www.wtfpl.net), so do what ever the fuck you want with it.
