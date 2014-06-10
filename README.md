@@ -12,15 +12,13 @@ This project is based on Apache Maven. So all you have to do after checkout is t
 
 `mvn clean tomcat:run`
 
-### Data storage ###
+### Technoogy ###
 
-
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+* based on Apache Tapestry
+* uses Tomcat as Container Runtime
+* Sqlite database
+* Hibernate
+* … just look into the pom's Dependency Section
 
 ### Who do I talk to? ###
-I don't give support for this code in any form
+I don't give support for this code in any form.
